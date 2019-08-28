@@ -28,10 +28,15 @@ recipeGenApp.categoriesQuery = function(){
     });
 };
 
+//after the first API call, we now have an object that contains an array that contains a series of recipe objects. We need to pull out the IDs from each object
+//
+//for each object in the array, get the ID, and push it to a new array called returnedIDs
+//
+//use these IDs to make a second API call (series of API calls) based on these IDs- these need to be used to dynamically generate URLs for the API calls
 
 recipeGenApp.idQuery = function(){
     return $.ajax({
-        url: `${apiUrlReturnRecipesByID}`,
+        url: `${apiUrlReturnRecipesByID}i=${recipeGenApp.idReturned}`,
         //write a function that generates these URLs^
         method: 'GET',
         dataType: 'json',
@@ -40,6 +45,26 @@ recipeGenApp.idQuery = function(){
         }
     })
 }
+
+recipeGenApp.returnedIds = [];
+
+recipeGenApp.requests = recipeGenApp.returnedIds.map(function(id) {
+  return $.ajax({
+    url: `${apiUrlReturnRecipesByID}?i=(id)`,
+    datatype: "json"
+  });
+});
+
+recipeGenApp.returnedFullRecipes=[];
+
+$.when(...recipeGenApp.requests)
+    .then((fullRecipes) =>{
+//write our code for what we want - we're going to get an object with an array with objects 
+    recipeGenApp.returnedFullRecipes.push(fullRecipes);
+    });
+
+
+
 
 
 

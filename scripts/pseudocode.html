@@ -11,3 +11,39 @@
 
 //add a print button
 //animation (animated header, clicking on a recipe prints the information on a recipe card)
+
+
+//STACK OVERFLOW ANSWER:
+
+
+
+
+
+
+
+
+// Use jQuery.when() to wait for all requests to complete, and provide
+// the responses in order (this is the purpose of $.when() or Promise.all()).
+// Note that $.when() expects multiple arguments so we need accomodate that
+// by spreading our array with Function.prototype.apply(). (This could be
+// written more simply in ES2015 as $.when(...requests)).
+
+
+$.when.apply(null, requests)
+  // done() is called after all requests are complete. All responses are
+  // passed as arguments in the order the requests were sent.
+  .done(function() {
+    // Loop through all arguments. Using a `for` loop because built-in
+    // `arguments` object isn't a real array, so we can't use
+    // arguments.forEach().
+    for (var i=0; i<arguments.length; i++) {
+      var response = arguments[i];
+      // Response is an array, the first element is the user object we want.
+      var user = response[0];
+      console.log(users[i] + " == " + user.display_name);
+    }
+  })
+  // If any request fails, it will be handled here.
+  .fail(function() {
+    alert('User request failed.');
+  });
