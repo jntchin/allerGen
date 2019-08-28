@@ -15,18 +15,29 @@ const recipeGenApp = {};
 const apiUrlFilterByMainIngredient = 'https://www.themealdb.com/api/json/v1/1/filter.php'; 
 const apiUrlReturnRecipesByID = 'https://www.themealdb.com/api/json/v1/1/lookup.php';
 
+const userMainIngredient = `seafood`;
+
 
 recipeGenApp.categoriesQuery = function(){
-    return $.ajax({
-        url: `${apiUrlFilterByMainIngredient}c=${userMainIngredient}`,
+    $.ajax({
+        url: `${apiUrlFilterByMainIngredient}?c=${userMainIngredient}`,
         method: 'GET',
         dataType: 'json',
         data: {
-            key: 1,
-            
+            key: 1
         }
+    }) .then(function(result){
+        recipeGenApp.categoriesQueryResult = result;
+        console.log(recipeGenApp.categoriesQueryResult);
     });
 };
+
+
+recipeGenApp.categoriesQuery();
+
+
+// console.log(recipeGenApp.categoriesQueryResult);
+
 
 //after the first API call, we now have an object that contains an array that contains a series of recipe objects. We need to pull out the IDs from each object
 //
@@ -46,33 +57,46 @@ recipeGenApp.idQuery = function(){
     })
 }
 
-recipeGenApp.returnedIds = [];
+//recipeGenApp.categoriesQueryResult THIS IS THE RESULT OF OUR FIRST QUERY
 
-recipeGenApp.requests = recipeGenApp.returnedIds.map(function(id) {
-  return $.ajax({
-    url: `${apiUrlReturnRecipesByID}?i=(id)`,
-    datatype: "json"
-  });
-});
-
-recipeGenApp.returnedFullRecipes=[];
-
-$.when(...recipeGenApp.requests)
-    .then((fullRecipes) =>{
-//write our code for what we want - we're going to get an object with an array with objects 
-    recipeGenApp.returnedFullRecipes.push(fullRecipes);
-    });
+// recipeGenApp.extractIDs = function(){
+//     (recipeGenApp.categoriesQueryResult)[meals].map(function(returnedRecipes){
+//         console.log(returnedRecipes.idMeal);  
+//     })
+// }
 
 
 
+// recipeGenApp.extractIDs();
+
+
+// recipeGenApp.returnedIds = [];
+
+// recipeGenApp.requests = recipeGenApp.returnedIds.map(function(id) {
+//   return $.ajax({
+//     url: `${apiUrlReturnRecipesByID}?i=(id)`,
+//     datatype: "json"
+//   });
+// });
+
+// recipeGenApp.returnedFullRecipes=[];
+
+// $.when(...recipeGenApp.requests)
+//     .then((fullRecipes) =>{
+// //write our code for what we want - we're going to get an object with an array with objects 
+//     recipeGenApp.returnedFullRecipes.push(fullRecipes);
+//     });
 
 
 
 
 
-//TESTING:
-// const allergens = [`peas`, `tomato`];
-// const ingredients = "peasfishpeanutscornflourwater";
 
-// const result = ingredients.includes(...allergens);
-// console.log(result); //This returns true because it includes at least one of the allergens
+
+
+// //TESTING:
+// // const allergens = [`peas`, `tomato`];
+// // const ingredients = "peasfishpeanutscornflourwater";
+
+// // const result = ingredients.includes(...allergens);
+// // console.log(result); //This returns true because it includes at least one of the allergens
