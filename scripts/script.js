@@ -16,6 +16,11 @@ const apiUrlFilterByMainIngredient = 'https://www.themealdb.com/api/json/v1/1/fi
 const apiUrlReturnRecipesByID = 'https://www.themealdb.com/api/json/v1/1/lookup.php';
 
 const userMainIngredient = `seafood`;
+recipeGenApp.categoriesQueryResult = "";
+
+recipeGenApp.extractIDs = function(){
+    recipeGenApp.categoriesQueryResult;   
+}
 
 
 recipeGenApp.categoriesQuery = function(){
@@ -28,14 +33,28 @@ recipeGenApp.categoriesQuery = function(){
         }
     }) .then(function(result){
         recipeGenApp.categoriesQueryResult = result;
-        console.log(recipeGenApp.categoriesQueryResult);
+        console.log("first console log", recipeGenApp.categoriesQueryResult);
+
+    }) .then(function(){
+        recipeGenApp.extractIDs(recipeGenApp.categoriesQueryResult);
+        console.log(`this is what we are querying the server with`, recipeGenApp.categoriesQueryResult);
     });
 };
 
+    
 recipeGenApp.categoriesQuery();
 
 
-// console.log(recipeGenApp.categoriesQueryResult);
+
+
+
+console.log(`attempt two`, recipeGenApp.categoriesQueryResult);
+
+
+// const hi = (data) => {
+//     console.log(`this is my hi function`, data);
+// } 
+
 
 
 //after the first API call, we now have an object that contains an array that contains a series of recipe objects. We need to pull out the IDs from each object
@@ -44,25 +63,26 @@ recipeGenApp.categoriesQuery();
 //
 //use these IDs to make a second API call (series of API calls) based on these IDs- these need to be used to dynamically generate URLs for the API calls
 
-recipeGenApp.idQuery = function(){
-    return $.ajax({
-        url: `${apiUrlReturnRecipesByID}i=${recipeGenApp.idReturned}`,
-        //write a function that generates these URLs^
-        method: 'GET',
-        dataType: 'json',
-        data: {
-            key: 1,
-        }
-    })
-}
+// recipeGenApp.idQuery = function(){
+//     return $.ajax({
+//         url: `${apiUrlReturnRecipesByID}i=${recipeGenApp.idReturned}`,
+//         //write a function that generates these URLs^
+//         method: 'GET',
+//         dataType: 'json',
+//         data: {
+//             key: 1,
+//         }
+//     })
+// }
 
-//recipeGenApp.categoriesQueryResult THIS IS THE RESULT OF OUR FIRST QUERY
+// //recipeGenApp.categoriesQueryResult THIS IS THE RESULT OF OUR FIRST QUERY
 
 // recipeGenApp.extractIDs = function(){
 //     (recipeGenApp.categoriesQueryResult)[meals].map(function(returnedRecipes){
 //         console.log(returnedRecipes.idMeal);  
 //     })
 // }
+//THIS IS THE FUNCTION WE WROTE ON WEDNESDAY^^
 
 
 
