@@ -32,7 +32,6 @@ recipeGenApp.categoriesQuery = function(){
     });
 };
 
-
 recipeGenApp.categoriesQuery();
 
 
