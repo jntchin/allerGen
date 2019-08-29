@@ -17,10 +17,20 @@ const apiUrlReturnRecipesByID = 'https://www.themealdb.com/api/json/v1/1/lookup.
 
 const userMainIngredient = `seafood`;
 recipeGenApp.categoriesQueryResult = "";
+recipeGenApp.extractIDs = [];
 
-recipeGenApp.extractIDs = function(res){
-    console.log(`Suzette helped us`, res.idMeal);
-}
+
+// recipeGenApp.extractIDs = function(res){
+//     for (let i = 0; i< (res.meals).length; i++){
+//         recipeGenApp.returnedIds = ((res.meals)[i].idMeal);
+//         console.log(recipeGenApp.returnedIds);
+//     }
+// }
+
+// recipeGenApp.extractIDs = (result.meals).map((firstApiCallResult) =>  {
+//     return (firstApiCallResult.idMeal);
+//   });
+
 
 
 recipeGenApp.categoriesQuery = function(){
@@ -32,30 +42,58 @@ recipeGenApp.categoriesQuery = function(){
             key: 1
         }
     }) .then(function(result){
-        console.log(result.meals[0]);
-        recipeGenApp.extractIDs(result.meals[0]);
+        recipeGenApp.extractIDs = (result.meals).map((firstApiCallResult) =>  {
+            return (firstApiCallResult.idMeal);
+          });
+        //   console.log(recipeGenApp.extractIDs);
+    }) .then(function(){
+        recipeGenApp.requests = recipeGenApp.extractIDs.map(function(id) {
+            return $.ajax({
+              url: `${apiUrlReturnRecipesByID}?i=${id}`,
+              datatype: "json"
+            });
+          }); 
+          console.log(recipeGenApp.requests);
     });
-       
-       
-
-        // }) .then(function(result){
-        //     recipeGenApp.categoriesQueryResult = result;
-        //     console.log("first console log", recipeGenApp.categoriesQueryResult);
-
-        // }) .then(function(){
-            
-        //     console.log(`this is what we are querying the server with`, recipeGenApp.categoriesQueryResult);
-        
-    };//CLOSING BRACKETS FOR FIRST FUNCTION
+};//CLOSING BRACKETS FOR FIRST FUNCTION
 
     
 recipeGenApp.categoriesQuery();
 
+//THESE ARE ALL THE THINGS WE NEED TO WORK ON:
+
+// recipeGenApp.requests = recipeGenApp.extractIDs.map(function(id) {
+//   return $.ajax({
+//     url: `${apiUrlReturnRecipesByID}?i=(id)`,
+//     datatype: "json"
+//   });
+// // });
+
+// recipeGenApp.returnedFullRecipes=[];
+
+// $.when(...recipeGenApp.requests)
+//     .then((fullRecipes) =>{
+// //write our code for what we want - we're going to get an object with an array with objects 
+//     recipeGenApp.returnedFullRecipes.push(fullRecipes);
+//     });
 
 
 
 
-console.log(`attempt two`, recipeGenApp.categoriesQueryResult);
+
+
+
+
+// //TESTING:
+// // const allergens = [`peas`, `tomato`];
+// // const ingredients = "peasfishpeanutscornflourwater";
+
+// // const result = ingredients.includes(...allergens);
+// // console.log(result); //This returns true because it includes at least one of the allergens
+
+
+
+//CODE DUMP
 
 
 // const hi = (data) => {
@@ -98,31 +136,14 @@ console.log(`attempt two`, recipeGenApp.categoriesQueryResult);
 
 // recipeGenApp.returnedIds = [];
 
-// recipeGenApp.requests = recipeGenApp.returnedIds.map(function(id) {
-//   return $.ajax({
-//     url: `${apiUrlReturnRecipesByID}?i=(id)`,
-//     datatype: "json"
-//   });
-// });
 
-// recipeGenApp.returnedFullRecipes=[];
+//FIRST ATTEMPT AT FIRST THEN FUNCTIONS IN FIRST FUNCTIONS
+// 
 
-// $.when(...recipeGenApp.requests)
-//     .then((fullRecipes) =>{
-// //write our code for what we want - we're going to get an object with an array with objects 
-//     recipeGenApp.returnedFullRecipes.push(fullRecipes);
-//     });
+        // }) .then(function(result){
+        //     recipeGenApp.categoriesQueryResult = result;
+        //     console.log("first console log", recipeGenApp.categoriesQueryResult);
 
-
-
-
-
-
-
-
-// //TESTING:
-// // const allergens = [`peas`, `tomato`];
-// // const ingredients = "peasfishpeanutscornflourwater";
-
-// // const result = ingredients.includes(...allergens);
-// // console.log(result); //This returns true because it includes at least one of the allergens
+        // }) .then(function(){
+            
+        //     console.log(`this is what we are querying the server with`, recipeGenApp.categoriesQueryResult);
