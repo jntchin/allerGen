@@ -18,8 +18,8 @@ const apiUrlReturnRecipesByID = 'https://www.themealdb.com/api/json/v1/1/lookup.
 const userMainIngredient = `seafood`;
 recipeGenApp.categoriesQueryResult = "";
 
-recipeGenApp.extractIDs = function(){
-    recipeGenApp.categoriesQueryResult;   
+recipeGenApp.extractIDs = function(res){
+    console.log(`Suzette helped us`, res.idMeal);
 }
 
 
@@ -32,14 +32,21 @@ recipeGenApp.categoriesQuery = function(){
             key: 1
         }
     }) .then(function(result){
-        recipeGenApp.categoriesQueryResult = result;
-        console.log("first console log", recipeGenApp.categoriesQueryResult);
-
-    }) .then(function(){
-        recipeGenApp.extractIDs(recipeGenApp.categoriesQueryResult);
-        console.log(`this is what we are querying the server with`, recipeGenApp.categoriesQueryResult);
+        console.log(result.meals[0]);
+        recipeGenApp.extractIDs(result.meals[0]);
     });
-};
+       
+       
+
+        // }) .then(function(result){
+        //     recipeGenApp.categoriesQueryResult = result;
+        //     console.log("first console log", recipeGenApp.categoriesQueryResult);
+
+        // }) .then(function(){
+            
+        //     console.log(`this is what we are querying the server with`, recipeGenApp.categoriesQueryResult);
+        
+    };//CLOSING BRACKETS FOR FIRST FUNCTION
 
     
 recipeGenApp.categoriesQuery();
@@ -82,7 +89,7 @@ console.log(`attempt two`, recipeGenApp.categoriesQueryResult);
 //         console.log(returnedRecipes.idMeal);  
 //     })
 // }
-//THIS IS THE FUNCTION WE WROTE ON WEDNESDAY^^
+// //THIS IS THE FUNCTION WE WROTE ON WEDNESDAY^^
 
 
 
