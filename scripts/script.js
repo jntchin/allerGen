@@ -18,7 +18,7 @@ const apiUrlReturnRecipesByID = 'https://www.themealdb.com/api/json/v1/1/lookup.
 const userMainIngredient = `seafood`;
 recipeGenApp.categoriesQueryResult = "";
 recipeGenApp.extractIDs = [];
-
+recipeGenApp.requests = [];
 
 // recipeGenApp.extractIDs = function(res){
 //     for (let i = 0; i< (res.meals).length; i++){
@@ -46,16 +46,28 @@ recipeGenApp.categoriesQuery = function(){
             return (firstApiCallResult.idMeal);
           });
         //   console.log(recipeGenApp.extractIDs);
-    }) .then(function(){
-        recipeGenApp.requests = recipeGenApp.extractIDs.map(function(id) {
-            return $.ajax({
-              url: `${apiUrlReturnRecipesByID}?i=${id}`,
-              datatype: "json"
+    }) .then(() => {
+        recipeGenApp.requests = (recipeGenApp.extractIDs).map(function(id){
+        return $.ajax({
+            url: `${apiUrlReturnRecipesByID}?i=${id}`,
+            datatype: "json"
             });
-          }); 
-          console.log(recipeGenApp.requests);
+        }); 
+        console.log(recipeGenApp.requests);
     });
-};//CLOSING BRACKETS FOR FIRST FUNCTION
+};
+
+//ORIGINAL FUNCTION
+    // .then(function(){
+    //     recipeGenApp.requests = (recipeGenApp.extractIDs).map(function(id){
+    //         return $.ajax({
+    //           url: `${apiUrlReturnRecipesByID}?i=${id}`,
+    //           datatype: "json"
+    //         });
+    //       }); 
+    //       console.log(recipeGenApp.requests);
+    // });
+//CLOSING BRACKETS FOR FIRST FUNCTION
 
     
 recipeGenApp.categoriesQuery();
