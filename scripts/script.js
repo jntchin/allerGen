@@ -21,8 +21,8 @@ recipeGenApp.userMainIngredient = $('option:selected').attr('value');
 recipeGenApp.userAllergen = $('checkbox:checked').attr
 
 recipeGenApp.categoriesQueryResult = "";
-recipeGenApp.extractIDs = [];
-recipeGenApp.requests = [];
+// recipeGenApp.extractIDs = [];
+// recipeGenApp.requests = [];
 
 //MAIN FUNCTION:
 recipeGenApp.categoriesQuery = function(){
@@ -37,18 +37,24 @@ recipeGenApp.categoriesQuery = function(){
         recipeGenApp.extractIDs = (result.meals).map((firstApiCallResult) =>  {
             return (firstApiCallResult.idMeal);
           });
-        //   console.log(recipeGenApp.extractIDs);
+        
     }) .then(() => {
         recipeGenApp.requests = (recipeGenApp.extractIDs).map(function(id){
+        // console.log(id);
         return $.ajax({
-            url: `${apiUrlReturnRecipesByID}?i=${id}`,
-            datatype: "json"
+            url: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
+            method: 'GET',
+            datatype: "json",
+            data: {
+                key: 1
+                }
             });
         }); 
+    }) .then(function(){
         console.log(recipeGenApp.requests);
-    });
+    })
 };
-// recipeGenApp.categoriesQuery();
+
 
 //BUTTON
 
