@@ -16,23 +16,15 @@ const apiUrlFilterByMainIngredient = 'https://www.themealdb.com/api/json/v1/1/fi
 const apiUrlReturnRecipesByID = 'https://www.themealdb.com/api/json/v1/1/lookup.php';
 
 const userMainIngredient = `seafood`;
+recipeGenApp.userMainIngredient = $('option:selected').attr('value');
+
+recipeGenApp.userAllergen = $('checkbox:checked').attr
+
 recipeGenApp.categoriesQueryResult = "";
 recipeGenApp.extractIDs = [];
 recipeGenApp.requests = [];
 
-// recipeGenApp.extractIDs = function(res){
-//     for (let i = 0; i< (res.meals).length; i++){
-//         recipeGenApp.returnedIds = ((res.meals)[i].idMeal);
-//         console.log(recipeGenApp.returnedIds);
-//     }
-// }
-
-// recipeGenApp.extractIDs = (result.meals).map((firstApiCallResult) =>  {
-//     return (firstApiCallResult.idMeal);
-//   });
-
-
-
+//MAIN FUNCTION:
 recipeGenApp.categoriesQuery = function(){
     $.ajax({
         url: `${apiUrlFilterByMainIngredient}?c=${userMainIngredient}`,
@@ -56,6 +48,15 @@ recipeGenApp.categoriesQuery = function(){
         console.log(recipeGenApp.requests);
     });
 };
+// recipeGenApp.categoriesQuery();
+
+//BUTTON
+
+$('form').on('submit', function(e){
+    e.preventDefault();
+    recipeGenApp.categoriesQuery();
+})
+
 
 //ORIGINAL FUNCTION
     // .then(function(){
@@ -70,7 +71,12 @@ recipeGenApp.categoriesQuery = function(){
 //CLOSING BRACKETS FOR FIRST FUNCTION
 
     
-recipeGenApp.categoriesQuery();
+
+
+
+
+
+
 
 //THESE ARE ALL THE THINGS WE NEED TO WORK ON:
 
@@ -159,3 +165,16 @@ recipeGenApp.categoriesQuery();
         // }) .then(function(){
             
         //     console.log(`this is what we are querying the server with`, recipeGenApp.categoriesQueryResult);
+
+
+//PROBABLY DON'T NEED
+// recipeGenApp.extractIDs = function(res){
+//     for (let i = 0; i< (res.meals).length; i++){
+//         recipeGenApp.returnedIds = ((res.meals)[i].idMeal);
+//         console.log(recipeGenApp.returnedIds);
+//     }
+// }
+//PROBABLY DON'T NEED
+// recipeGenApp.extractIDs = (result.meals).map((firstApiCallResult) =>  {
+//     return (firstApiCallResult.idMeal);
+//   });
