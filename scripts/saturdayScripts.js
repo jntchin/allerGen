@@ -36,9 +36,9 @@ recipeGenApp.categoriesQuery = function(){
     }).then(res => {
         let idArr = res.meals.map(meal => meal.idMeal);
         console.log(idArr)
-        idArr.forEach(el =>{
+        const promisesArray = idArr.map(el =>{
             index = el;
-            console.log(index);
+            // console.log(index);
             return  $.ajax({
                 url: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${index}`,
                     method: 'GET',
@@ -46,24 +46,35 @@ recipeGenApp.categoriesQuery = function(){
                     data: {
                         key: 1
                         }
-            }).then(res => {
-                const instructionsArr = res.meals.map(recipe => recipe.strInstructions)
-                //LINE BELOW IS ALEX'S CODE + our modifications
-                const filteredRecipes = instructionsArr.filter(recipe => recipe.includes('water') == false && recipe.includes('ginger') == false);
-               //THIS IS OUR CODE (cannot run both at the same time)
-                // const filteredRecipes = instructionsArr.filter(recipe =>recipe.strInstructions.includes('garlic')==false
-                // ); 
-
-                // const filteredRecipes = instructionsArr.map(function(recipe){
-                //     if (recipe.strInstructions.includes('garlic')==false){
-                //         finalRecipes.push(recipe);
-                //         // filteredRecipes.pop
-                //     } 
-                //     console.log(finalRecipes);
-                // })
-                console.log(filteredRecipes);
+            })
         })
-    })
+
+        $.when(...promisesArray)
+            
+            .then((...res) => {
+                res.forEach(function(item){
+                    console.log(item[0].meals[0].strInstructions);
+                    if (!item[0].meals[0].strInstructions.includes('lime', 'water')){
+                        finalRecipes.push(item[0].meals[0]);
+                    }
+                });
+                // const instructionsArr = res.meals.map(recipe => recipe.strInstructions)
+                // //LINE BELOW IS ALEX'S CODE + our modifications
+                // const filteredRecipes = instructionsArr.filter(recipe => recipe.includes('water') == false && recipe.includes('ginger') == false);
+        //        //THIS IS OUR CODE (cannot run both at the same time)
+        //         // const filteredRecipes = instructionsArr.filter(recipe =>recipe.strInstructions.includes('garlic')==false
+        //         // ); 
+
+        //         // const filteredRecipes = instructionsArr.map(function(recipe){
+        //         //     if (recipe.strInstructions.includes('garlic')==false){
+        //         //         finalRecipes.push(recipe);
+        //         //         // filteredRecipes.pop
+        //         //     } 
+        //         //     console.log(finalRecipes);
+        //         // })
+        //         console.log(filteredRecipes);
+        })
+    
 })
-    $.when(recipeGenApp.extractIDs).then(console.log(recipeGenApp.extractIDs));
+    // $.when(recipeGenApp.extractIDs).then(console.log(recipeGenApp.extractIDs));
 };

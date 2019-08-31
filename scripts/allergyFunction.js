@@ -60,14 +60,13 @@ recipeGenApp.stringify = function(result) {
 
     console.log(testAllergies);
     if(recipeGenApp.ingredientArray.includes(testAllergies) == false) {
-        console.log(`it's neither true nor false`);
+        console.log(`it worked`);
         recipeGenApp.finalRecipes.push(...recipeGenApp.ingredientArray);
     }
 
     console.log('final recipes',recipeGenApp.finalRecipes);
     
     recipeGenApp.ingredientArray.length = 0;
-
 
     // console.log('ingredient array',recipeGenApp.ingredientArray)
 
@@ -79,3 +78,43 @@ recipeGenApp.recipesArray.map(function(res){
     recipeGenApp.stringify(res);
 
 })
+
+
+
+const userMainIngredient = `seafood`;
+recipeGenApp.userMainIngredient = $('option:selected').attr('value');
+
+recipeGenApp.userAllergen = $('checkbox:checked').attr
+
+recipeGenApp.categoriesQueryResult = "";
+recipeGenApp.extractIDs = [];
+
+const finalRecipes = [];
+
+// //IGNORE ME
+// recipeGenApp.jessTest = function(){
+//         $.ajax({
+//             url: `${apiUrlFilterByMainIngredient}?c=${recipeGenApp.userMainIngredient}`,
+//             method: 'GET',
+//             dataType: 'json',
+//             data: {
+//                 key: 1
+//             },
+//         }).then(res => {
+//             let idArr = res.meals.map(meal => meal.idMeal);
+//             console.log(idArr)
+//             idArr.forEach(el =>{
+//                 index = el;
+//                 console.log(index);
+//                 return  $.ajax({
+//                     url: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${index}`,
+//                         method: 'GET',
+//                         datatype: "json",
+//                         data: {
+//                             key: 1
+//                             }
+//                 }).then(res => {
+//                     const instructionsArr = res.meals.map(recipe => recipe.strInstructions)
+//                 }
+// // }
+
