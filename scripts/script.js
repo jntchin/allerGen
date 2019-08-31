@@ -18,10 +18,14 @@ const apiUrlReturnRecipesByID = 'https://www.themealdb.com/api/json/v1/1/lookup.
 const userMainIngredient = `seafood`;
 recipeGenApp.userMainIngredient = $('option:selected').attr('value');
 
+// allergenArr = [];
+// if value === milk 
+// allergenArray.push(...)
+
 recipeGenApp.userAllergen = $('checkbox:checked').attr
 
 recipeGenApp.categoriesQueryResult = "";
-// recipeGenApp.extractIDs = [];
+recipeGenApp.extractIDs = [];
 // recipeGenApp.requests = [];
 
 //MAIN FUNCTION:
@@ -34,25 +38,35 @@ recipeGenApp.categoriesQuery = function(){
             key: 1
         }
     }) .then(function(result){
-        recipeGenApp.extractIDs = (result.meals).map((firstApiCallResult) =>  {
-            return (firstApiCallResult.idMeal);
+        let idArr = recipeGenApp.extractIDs = (result.meals).map( res =>  {
+            return (res.idMeal);
           });
-        
-    }) .then(() => {
-        recipeGenApp.requests = (recipeGenApp.extractIDs).map(function(id){
-        // console.log(id);
-        return $.ajax({
-            url: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
-            method: 'GET',
-            datatype: "json",
-            data: {
-                key: 1
-                }
-            });
-        }); 
-    }) .then(function(){
-        console.log(recipeGenApp.requests);
-    })
+          console.log(idArr);  
+    }); 
+
+    updateArray = (data) => {
+        recipeGenApp.extractIDs.push(data);
+    }
+    console.log(recipeGenApp.extractIDs);
+
+    $.when(recipeGenApp.extractIDs).then(console.log(recipeGenApp.extractIDs));
+    
+    // .then(() => {
+        // recipeGenApp.requests = (recipeGenApp.extractIDs).map(function(id){
+        // // console.log(id);
+        // return $.ajax({
+        //     url: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
+        //     method: 'GET',
+        //     datatype: "json",
+        //     data: {
+        //         key: 1
+        //         }
+        //     });
+        // }); 
+    // }) .then(function(){
+    //     console.log(recipeGenApp.requests);
+    // })
+    // }
 };
 
 
