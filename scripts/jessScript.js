@@ -3,46 +3,23 @@ const apiUrlFilterByMainIngredient = 'https://www.themealdb.com/api/json/v1/1/fi
 const apiUrlReturnRecipesByID = 'https://www.themealdb.com/api/json/v1/1/lookup.php';
 
 
-const allergenObject = {
-    peanuts: 'peanut',
-    nuts: 'nut, brazil, pecan, macadamia',
-    dairy: 'milk, cheese, yogurt, yogourt, cream, feta, cheddar, brie, gouda',
-    eggs: 'eggs, mayonnaise',
-    gluten: 'wheat, glutinous, gluten, soy sauce, beer, flour',
-    soy: 'soy tofu edamame',
-    fish: 'fish, salmon, tuna, mackerel, sardines, herring, haddock, cod',
-    shellfish: 'lobster, crab, shrimp, scampi, scallops, mussels, oysters, clams, prawns, octopus, squid, snails, calamari',
-}
-//TWO OPTIONS
-//1) each checkbox refers to an array, we spread the array open in order to use the strings that are inside it
-//2) make one array with all of our allergen objects, and each of those objects has keys of those types of allergens (i.e. soy is the object and soy, tofu, edameme are the keys) 
-
-const allergyObject = {
-    nuts: ['nut', 'brazil', 'pecan', 'macadamia'],
-    soy: ['soy', 'edamame', 'tofu'],
-    dairy: ['yogurt', 'yogourt']
-}
-
-console.log(...allergyObject.nuts);
-
-recipeGenApp.peanutsArray = ["peanut"];
-nuts = ["nut", "brazil", "pecan", "macadamia"];
-recipeGenApp.dairyArray = ["milk, cheese, yogurt, yogourt, cream, feta, cheddar, brie, gouda"];
-recipeGenApp.eggsArray = ["egg, mayonnaise"];
-
-recipeGenApp.glutenArray = ["wheat, glutinous, gluten, soy sauce, beer, flour"];
-
-recipeGenApp.soyArray = ["soy, tofu, edamame"];
-recipeGenApp.fishArray = ["fish, salmon, tuna, mackerel, sardines, herring, haddock, cod"];
-recipeGenApp.shellfish = ["lobster, crab, shrimp, scampi, scallops, mussels, oysters, clams, prawns, octopus, squid, snails, calamari"];
-
-// console.log(allergenObject.dairy);
+//each key is an allergen, and the attributes of that key are the ways the allergen can manifest
+// const allergenObject = {
+//     peanuts: 'peanut',
+//     nuts: 'nut, brazil, pecan, macadamia',
+//     dairy: 'milk, cheese, yogurt, yogourt, cream, feta, cheddar, brie, gouda',
+//     eggs: 'eggs',
+//     gluten: 'wheat, glutinous, gluten, soy sauce, beer, flour',
+//     soy: 'soy tofu edamame',
+//     fish: 'fish, salmon, tuna, mackerel, sardines, herring, haddock, cod',
+//     shellfish: 'lobster, crab, shrimp, scampi, scallops, mussels, oysters, clams, prawns, octopus, squid, snails, calamari',
+// }
 
 recipeGenApp.categoriesQueryResult = "";
 recipeGenApp.extractIDs = [];
 // recipeGenApp.requests = [];
 const finalRecipes = [];
-
+const newRecipeArray = [];
 //BUTTON
 
 $('form').on('submit', function(e){
@@ -57,8 +34,6 @@ recipeGenApp.categoriesQuery = function(){
     console.log(recipeGenApp.userMainIngredient);
 
     recipeGenApp.userAllergen = $('input[type="checkbox"]:checked').attr('value');
-
-    console.log(recipeGenApp.userAllergen);
 
     $.ajax({
         url: `${apiUrlFilterByMainIngredient}?c=${recipeGenApp.userMainIngredient}`,
@@ -81,20 +56,46 @@ recipeGenApp.categoriesQuery = function(){
                         }
             })
         })
-
         $.when(...promisesArray)
             .then((...res) => {
-                // console.log('inside the .then', allergenObject.dairy);
-                res.forEach(function(item){
+                res.forEach (function(item) {
+                    newRecipeArray.push(item[0].meals[0]);
+                }); 
+            }).then((...result) => {
+                result.forEach(function(item){
                     console.log(item[0].meals[0].strInstructions);
-                    if (item[0].meals[0].strInstructions.includes(...allergyObject.dairy)===false){
-                        console.log('inside the if statement');
+                    if (!item[0].meals[0].strInstructions.includes('soy')){
                         finalRecipes.push(item[0].meals[0]);
                     }
                 });
+
             });
-            // console.log('inside the .when', allergenObject.dairy);
-    });
+        });
+    };
+
+
+
+
+    // }).then(() => {
+    //     console.log(newRecipeArray);
+    //     newRecipeArray.filter(function(item){
+    //         (item[0].meals[0].includes('soy')===false);
+    //     })
+    //     console.log(newRecipeArray);
+    // });
     
-};
+        
+
+
+
+//  res.forEach(function(item){
+//                     ['fish', 'soy', 'bananas'].map(function(allergen){
+//                         if (item[0].meals[0].strInstructions.includes(allergen)===false){
+//                             // console.log(allergen);
+//                             finalRecipes.push(item[0].meals[0]);
+//                         }
+//                     })
+//                     // console.log(item[0].meals[0].strInstructions);
+                   
+//                 });
 

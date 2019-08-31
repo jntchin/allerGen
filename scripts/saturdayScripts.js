@@ -3,29 +3,20 @@ const apiUrlFilterByMainIngredient = 'https://www.themealdb.com/api/json/v1/1/fi
 const apiUrlReturnRecipesByID = 'https://www.themealdb.com/api/json/v1/1/lookup.php';
 
 //BUTTON
-
 $('form').on('submit', function(e){
     e.preventDefault();
     recipeGenApp.categoriesQuery();
 })
 //
 
-const userMainIngredient = `seafood`;
-recipeGenApp.userMainIngredient = $('option:selected').attr('value');
-
-// allergenArr = [];
-// if value === milk 
-// allergenArray.push(...)
-
-recipeGenApp.userAllergen = $('checkbox:checked').attr
-
-recipeGenApp.categoriesQueryResult = "";
-recipeGenApp.extractIDs = [];
-// recipeGenApp.requests = [];
 const finalRecipes = [];
 
 //MAIN FUNCTION:
 recipeGenApp.categoriesQuery = function(){
+    recipeGenApp.userMainIngredient = $('option:selected').attr('value');
+    console.log(recipeGenApp.userMainIngredient);
+    recipeGenApp.userAllergen = $('input[type="checkbox"]:checked').attr('value');
+    console.log(recipeGenApp.userAllergen);
     $.ajax({
         url: `${apiUrlFilterByMainIngredient}?c=${recipeGenApp.userMainIngredient}`,
         method: 'GET',
@@ -38,7 +29,6 @@ recipeGenApp.categoriesQuery = function(){
         console.log(idArr)
         const promisesArray = idArr.map(el =>{
             index = el;
-            // console.log(index);
             return  $.ajax({
                 url: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${index}`,
                     method: 'GET',
@@ -48,17 +38,22 @@ recipeGenApp.categoriesQuery = function(){
                         }
             })
         })
-
         $.when(...promisesArray)
-            
             .then((...res) => {
+                finalRecipes.length = 0 ;
                 res.forEach(function(item){
                     console.log(item[0].meals[0].strInstructions);
-                    if (!item[0].meals[0].strInstructions.includes('lime', 'water')){
+                    if (!item[0].meals[0].strInstructions.includes(recipeGenApp.userAllergen)){
                         finalRecipes.push(item[0].meals[0]);
                     }
                 });
-                // const instructionsArr = res.meals.map(recipe => recipe.strInstructions)
+        });
+    })
+};
+
+
+
+// const instructionsArr = res.meals.map(recipe => recipe.strInstructions)
                 // //LINE BELOW IS ALEX'S CODE + our modifications
                 // const filteredRecipes = instructionsArr.filter(recipe => recipe.includes('water') == false && recipe.includes('ginger') == false);
         //        //THIS IS OUR CODE (cannot run both at the same time)
@@ -73,8 +68,6 @@ recipeGenApp.categoriesQuery = function(){
         //         //     console.log(finalRecipes);
         //         // })
         //         console.log(filteredRecipes);
-        })
-    
-})
+
+
     // $.when(recipeGenApp.extractIDs).then(console.log(recipeGenApp.extractIDs));
-};
