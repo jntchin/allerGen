@@ -13,6 +13,12 @@ const finalRecipes = [];
 const finalIngredients = [];
 const finalMeasurements = [];
 
+$('ul.recipePreviews').on('click','li.fullRecipe',()=>{
+    console.log('i was clicked');
+    $('div.directions').removeClass('hidden');
+})
+//Make this more specific to only select the element that's been clicked on.
+
 //MAIN FUNCTION:
 recipeGenApp.categoriesQuery = function(){
     recipeGenApp.userMainIngredient = $('option:selected').attr('value');
@@ -70,28 +76,28 @@ recipeGenApp.categoriesQuery = function(){
 
                     console.log('count is:', count);
                     
-                    $('ul.recipes').append(`
-                    <li class="recipe${count}">
+                    $('ul.recipePreviews').append(`
+                    <li class="recipe${count} fullRecipe">
                         <p class="title">${recipe.strMeal}</p>
                         <img src="${recipe.strMealThumb}" alt="an image of ${recipe.strMeal}">
                         <div class="directions hidden">
-                            <div class="measurements"></div> 
-                            <div class="ingredients"></div>
+                            <ul class="measurements"></ul> 
+                            <ul class="ingredients"></ul>
                             <div class="instructions">
-                                ${recipe.strInstructions}
+                                <p>${recipe.strInstructions}</p>
                             </div>
                         </div>
                     </li>
                     `);
 
                     finalIngredients.forEach((ing)=> {
-                        $(`li.recipe${count} div.ingredients`).append(`
+                        $(`li.recipe${count} ul.ingredients`).append(`
                             <li>${ing}</li>
                         `) 
                     });
 
                     finalMeasurements.forEach((mes)=> {
-                        $(`li.recipe${count} div.measurements`).append(`<p>${mes}</p>`) 
+                        $(`li.recipe${count} ul.measurements`).append(`<li>${mes}</li>`) 
                     });
 
 
