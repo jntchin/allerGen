@@ -14,9 +14,26 @@ body{
 
 //DROP-DOWN AND CHECKBOX STYLES
 
+form{
+    max-width: 100%;
+    margin: 5%;
+}
+
+select{
+    float: left;
+    width: 40%;
+    // padding: 2%;
+}
+
+fieldset{
+    float: left;
+    width: 40%;
+    // padding: 2%;
+}
+
 .userChoices{
-    background: ($teal);
-    color: ($lightgrey);
+    background: ($blue);
+    color: black;
 }
 
 //RECIPE STYLES
