@@ -49,41 +49,44 @@ recipeGenApp.categoriesQuery = function(){
                     }
                 });
 
+                let count = 0;
+
                 finalRecipes.forEach(function(recipe){
+                    
+                    count = count + 1;
                     for(i=1;i<21;i++){
-                        finalIngredients.length = 0;
-                       if (recipe.strIngredienti === null){
-                           finalIngredients.push(recipe.strIngredienti);
+                        console.log(recipe[`strIngredient${i}`]);
+                       if (recipe[`strIngredient${i}`] !== null){
+                           finalIngredients.push(recipe[`strIngredient${i}`]);
                        }
                     }
+                    
+
+                    
+
                     $('ul').append(`
-                    <li>
+                    <li class="recipe${count}">
                         <p>${recipe.strMeal}</p>
-                        <img src="${recipe.strMealThumb}" alt="an image of ${recipe.strMeal}">
-                        <p class="hidden">${recipe.strMeasure1}    ${recipe.strIngredient1}</p>
-                        <p class="hidden">${recipe.strMeasure2}    ${recipe.strIngredient2}</p>
-                        <p class="hidden">${recipe.strMeasure3}    ${recipe.strIngredient3}</p>
-                        <p class="hidden">${recipe.strMeasure4}    ${recipe.strIngredient4}</p>
-                        <p class="hidden">${recipe.strMeasure5}    ${recipe.strIngredient5}</p>
-                        <p class="hidden">${recipe.strMeasure6}    ${recipe.strIngredient6}</p>
-                        <p class="hidden">${recipe.strMeasure7}    ${recipe.strIngredient7}</p>
-                        <p class="hidden">${recipe.strMeasure8}    ${recipe.strIngredient8}</p>
-                        <p class="hidden">${recipe.strMeasure9}    ${recipe.strIngredient9}</p>
-                        <p class="hidden">${recipe.strMeasure10}    ${recipe.strIngredient10}</p>
-                        <p class="hidden">${recipe.strMeasure11}    ${recipe.strIngredient11}</p>
-                        <p class="hidden">${recipe.strMeasure12}    ${recipe.strIngredient12}</p>
-                        <p class="hidden">${recipe.strMeasure13}    ${recipe.strIngredient13}</p>
-                        <p class="hidden">${recipe.strMeasure14}    ${recipe.strIngredient14}</p>
-                        <p class="hidden">${recipe.strMeasure15}    ${recipe.strIngredient15}</p>
-                        <p class="hidden">${recipe.strMeasure16}    ${recipe.strIngredient16}</p>
-                        <p class="hidden">${recipe.strMeasure17}    ${recipe.strIngredient17}</p>
-                        <p class="hidden">${recipe.strMeasure18}    ${recipe.strIngredient18}</p>
-                        <p class="hidden">${recipe.strMeasure19}    ${recipe.strIngredient19}</p>
-                        <p class="hidden">${recipe.strMeasure20}    ${recipe.strIngredient20}</p>
-                        <p class="hidden">${recipe.strInstructions}</p>
-                        
+                        <img src="${recipe.strMealThumb}" alt="an image of ${recipe.strMeal}">   
                     </li>
-                    `)
+                    `);
+
+                    finalIngredients.forEach((ing)=> {
+                        $(`ul li.${count}`).append(`<p>${ing}</p>`) 
+                    });
+
+                    console.log('our ingredient list to append:',ingredientsToAppend);
+
+
+                    console.log('finalIngredients array:',finalIngredients);
+
+
+
+                    
+                     
+                    
+                    console.log('finalIngredients',finalIngredients);
+                    finalIngredients.length = 0;
                 })
 
             });
@@ -111,3 +114,25 @@ recipeGenApp.categoriesQuery = function(){
 
 
     // $.when(recipeGenApp.extractIDs).then(console.log(recipeGenApp.extractIDs));
+
+    // <p class="hidden">${recipe.strMeasure1}    ${recipe.strIngredient1}</p>
+    //                     <p class="hidden">${recipe.strMeasure2}    ${recipe.strIngredient2}</p>
+    //                     <p class="hidden">${recipe.strMeasure3}    ${recipe.strIngredient3}</p>
+    //                     <p class="hidden">${recipe.strMeasure4}    ${recipe.strIngredient4}</p>
+    //                     <p class="hidden">${recipe.strMeasure5}    ${recipe.strIngredient5}</p>
+    //                     <p class="hidden">${recipe.strMeasure6}    ${recipe.strIngredient6}</p>
+    //                     <p class="hidden">${recipe.strMeasure7}    ${recipe.strIngredient7}</p>
+    //                     <p class="hidden">${recipe.strMeasure8}    ${recipe.strIngredient8}</p>
+    //                     <p class="hidden">${recipe.strMeasure9}    ${recipe.strIngredient9}</p>
+    //                     <p class="hidden">${recipe.strMeasure10}    ${recipe.strIngredient10}</p>
+    //                     <p class="hidden">${recipe.strMeasure11}    ${recipe.strIngredient11}</p>
+    //                     <p class="hidden">${recipe.strMeasure12}    ${recipe.strIngredient12}</p>
+    //                     <p class="hidden">${recipe.strMeasure13}    ${recipe.strIngredient13}</p>
+    //                     <p class="hidden">${recipe.strMeasure14}    ${recipe.strIngredient14}</p>
+    //                     <p class="hidden">${recipe.strMeasure15}    ${recipe.strIngredient15}</p>
+    //                     <p class="hidden">${recipe.strMeasure16}    ${recipe.strIngredient16}</p>
+    //                     <p class="hidden">${recipe.strMeasure17}    ${recipe.strIngredient17}</p>
+    //                     <p class="hidden">${recipe.strMeasure18}    ${recipe.strIngredient18}</p>
+    //                     <p class="hidden">${recipe.strMeasure19}    ${recipe.strIngredient19}</p>
+    //                     <p class="hidden">${recipe.strMeasure20}    ${recipe.strIngredient20}</p>
+    //                     <p class="hidden">${recipe.strInstructions}</p>
