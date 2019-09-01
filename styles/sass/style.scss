@@ -1,3 +1,33 @@
-body{
-    background: red;
+@import 'variables';
+@import 'typography';
+
+
+//GENERAL STYLES
+
+html{
+    font-size: 125%;
 }
+
+body{
+    background: ($yellow);
+}
+
+//DROP-DOWN AND CHECKBOX STYLES
+
+.userChoices{
+    background: ($teal);
+    color: ($lightgrey);
+}
+
+//RECIPE STYLES
+
+.recipes{
+    background: ($yellow);
+    color: black;
+}
+
+ul{
+    list-style: none;
+}
+
+//FOOTER STYLES

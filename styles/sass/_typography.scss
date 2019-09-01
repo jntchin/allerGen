@@ -1,0 +1,27 @@
+@import 'variables';
+
+h1{
+    font-family: ($h1Font);
+    font-size: 2rem;
+}
+
+h2{
+    font-family: ($baseFont);
+}
+
+form{
+    font-family: ($baseFont);
+}
+
+li{
+    font-family: ($baseFont);
+    font-style: italic; 
+}
+
+li p{
+    font-family: ($baseFont);
+}
+
+footer{
+    font-family: ($baseFont);
+}

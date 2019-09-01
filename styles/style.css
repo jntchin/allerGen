@@ -1,3 +1,47 @@
+h1 {
+  font-family: "BioRhyme", serif;
+  font-size: 2rem;
+}
+
+h2 {
+  font-family: "Cabin", sans-serif;
+}
+
+form {
+  font-family: "Cabin", sans-serif;
+}
+
+li {
+  font-family: "Cabin", sans-serif;
+  font-style: italic;
+}
+
+li p {
+  font-family: "Cabin", sans-serif;
+}
+
+footer {
+  font-family: "Cabin", sans-serif;
+}
+
+html {
+  font-size: 125%;
+}
+
 body {
-  background: red;
+  background: #FFAF20;
+}
+
+.userChoices {
+  background: #10455B;
+  color: #F9F3FD;
+}
+
+.recipes {
+  background: #FFAF20;
+  color: black;
+}
+
+ul {
+  list-style: none;
 }
