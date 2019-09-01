@@ -11,6 +11,15 @@ form {
   font-family: "Cabin", sans-serif;
 }
 
+.measurements {
+  font-family: "Cabin", sans-serif;
+  font-weight: 800;
+}
+
+.ingredients {
+  font-family: "Cabin", sans-serif;
+}
+
 li {
   font-family: "Cabin", sans-serif;
   font-style: italic;
@@ -29,16 +38,31 @@ html {
 }
 
 body {
-  background: #FFAF20;
+  background: #fde74c;
+}
+
+form {
+  max-width: 100%;
+  margin: 5%;
+}
+
+select {
+  float: left;
+  width: 40%;
+}
+
+fieldset {
+  float: left;
+  width: 40%;
 }
 
 .userChoices {
-  background: #10455B;
-  color: #F9F3FD;
+  background: #5bafe1;
+  color: black;
 }
 
 .recipes {
-  background: #FFAF20;
+  background: #fde74c;
   color: black;
 }
 
