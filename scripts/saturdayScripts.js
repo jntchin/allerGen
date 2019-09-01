@@ -11,6 +11,7 @@ $('form').on('submit', function(e){
 
 const finalRecipes = [];
 const finalIngredients = [];
+const finalMeasurements = [];
 
 //MAIN FUNCTION:
 recipeGenApp.categoriesQuery = function(){
@@ -43,7 +44,7 @@ recipeGenApp.categoriesQuery = function(){
             .then((...res) => {
                 finalRecipes.length = 0 ;
                 res.forEach(function(item){
-                    console.log(item[0].meals[0].strInstructions);
+                    console.log(item[0].meals[0]);
                     if (!item[0].meals[0].strInstructions.includes(recipeGenApp.userAllergen)){
                         finalRecipes.push(item[0].meals[0]);
                     }
@@ -51,8 +52,7 @@ recipeGenApp.categoriesQuery = function(){
 
                 let count = 0;
 
-                finalRecipes.forEach(function(recipe){
-                    
+                finalRecipes.forEach(function(recipe){    
                     count = count + 1;
                     for(i=1;i<21;i++){
                         console.log(recipe[`strIngredient${i}`]);
@@ -60,22 +60,47 @@ recipeGenApp.categoriesQuery = function(){
                            finalIngredients.push(recipe[`strIngredient${i}`]);
                        }
                     }
-                    
 
-                    
+                    for(i=1;i<21;i++){
+                        console.log(recipe[`strMeasure${i}`]);
+                       if (recipe[`strMeasure${i}`] !== null){
+                           finalMeasurements.push(recipe[`strMeasure${i}`]);
+                       }
+                    }
 
-                    $('ul').append(`
+                    console.log('count is:', count);
+                    
+                    $('ul.recipes').append(`
                     <li class="recipe${count}">
-                        <p>${recipe.strMeal}</p>
-                        <img src="${recipe.strMealThumb}" alt="an image of ${recipe.strMeal}">   
+                        <p class="title">${recipe.strMeal}</p>
+                        <img src="${recipe.strMealThumb}" alt="an image of ${recipe.strMeal}">
+                        <div class="directions hidden">
+                            <div class="measurements"></div> 
+                            <div class="ingredients"></div>
+                            <div class="instructions">
+                                ${recipe.strInstructions}
+                            </div>
+                        </div>
                     </li>
                     `);
 
                     finalIngredients.forEach((ing)=> {
-                        $(`ul li.${count}`).append(`<p>${ing}</p>`) 
+                        $(`li.recipe${count} div.ingredients`).append(`
+                            <li>${ing}</li>
+                        `) 
                     });
 
-                    console.log('our ingredient list to append:',ingredientsToAppend);
+                    finalMeasurements.forEach((mes)=> {
+                        $(`li.recipe${count} div.measurements`).append(`<p>${mes}</p>`) 
+                    });
+
+
+
+                    
+
+
+
+                    // console.log('our ingredient list to append:',ingredientsToAppend);
 
 
                     console.log('finalIngredients array:',finalIngredients);
@@ -87,6 +112,7 @@ recipeGenApp.categoriesQuery = function(){
                     
                     console.log('finalIngredients',finalIngredients);
                     finalIngredients.length = 0;
+                    finalMeasurements.length = 0;
                 })
 
             });
