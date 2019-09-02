@@ -13,10 +13,29 @@ const finalRecipes = [];
 const finalIngredients = [];
 const finalMeasurements = [];
 
-$('ul.recipePreviews').on('click','li.fullRecipe',()=>{
-    console.log('i was clicked');
-    $('div.directions').removeClass('hidden');
+$('ul.recipePreviews').on('click','li.fullRecipe',function(){
+    console.log('li was clicked');
+    $(this).find('div.directions').removeClass('hidden');
+    $(this).find('button.exit').removeClass('hidden');
+    
+    // $('ul.recipePreviews').on('click');
+
+
 })
+
+$('ul.recipePreviews').on('click','button.exit',function(){
+    console.log('exit was clicked');
+    $('ul.recipePreviews').off('click');
+
+    // $(this).parent.addClass('hidden');
+})
+
+// $('ul.recipePreviews').on('click','li.fullRecipe',function(){
+//     console.log('li was clicked');
+//     console.log ('event.target:', $(this).find('li'));
+//     $(this).find('li').removeClass('hidden');
+    // event.target.firstChild.firstChild.removeClass('hidden');
+// })
 //Make this more specific to only select the element that's been clicked on.
 
 //MAIN FUNCTION:
@@ -80,6 +99,7 @@ recipeGenApp.categoriesQuery = function(){
                     <li class="recipe${count} fullRecipe">
                         <p class="title">${recipe.strMeal}</p>
                         <img src="${recipe.strMealThumb}" alt="an image of ${recipe.strMeal}">
+                        <button class="exit hidden"><span aria-hidden>X</span><span class="visuallyHidden">Exit Button</span></button>
                         <div class="directions hidden">
                             <ul class="measurements"></ul> 
                             <ul class="ingredients"></ul>
@@ -99,31 +119,15 @@ recipeGenApp.categoriesQuery = function(){
                     finalMeasurements.forEach((mes)=> {
                         $(`li.recipe${count} ul.measurements`).append(`<li>${mes}</li>`) 
                     });
-
-
-
                     
-
-
-
-                    // console.log('our ingredient list to append:',ingredientsToAppend);
-
-
                     console.log('finalIngredients array:',finalIngredients);
-
-
-
-                    
-                     
-                    
+ 
                     console.log('finalIngredients',finalIngredients);
                     finalIngredients.length = 0;
                     finalMeasurements.length = 0;
                 })
-
             });
     })
-
 };
 
 

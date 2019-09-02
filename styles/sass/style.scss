@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'typography';
+@import 'setup';
 
 
 //GENERAL STYLES
@@ -45,6 +46,10 @@ fieldset{
 
 ul{
     list-style: none;
+}
+
+.hidden {
+    display: none;
 }
 
 //FOOTER STYLES
