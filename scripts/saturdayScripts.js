@@ -6,6 +6,7 @@ const apiUrlReturnRecipesByID = 'https://www.themealdb.com/api/json/v1/1/lookup.
 $('form').on('submit', function(e){
     e.preventDefault();
     recipeGenApp.categoriesQuery();
+    $('.refreshButton').removeClass('hidden');
 })
 //
 
@@ -13,22 +14,23 @@ const finalRecipes = [];
 const finalIngredients = [];
 const finalMeasurements = [];
 
+
+
 $('ul.recipePreviews').on('click','li.fullRecipe',function(){
     console.log('li was clicked');
     $(this).find('div.directions').removeClass('hidden');
-    $(this).find('button.exit').removeClass('hidden');
-    
-    // $('ul.recipePreviews').on('click');
-
-
+    $(this).siblings('button.exit').removeClass('hidden');
 })
+    // $('ul.recipePreviews').on('click');
 
 $('ul.recipePreviews').on('click','button.exit',function(){
     console.log('exit was clicked');
-    $('ul.recipePreviews').off('click');
-
+    $(this).siblings('li.fullRecipe').find('div.directions').addClass('hidden');
+    // $('ul.recipePreviews').off('click');
     // $(this).parent.addClass('hidden');
 })
+
+recipeGenApp.recipePreviewClicked === false;
 
 // $('ul.recipePreviews').on('click','li.fullRecipe',function(){
 //     console.log('li was clicked');
@@ -99,7 +101,6 @@ recipeGenApp.categoriesQuery = function(){
                     <li class="recipe${count} fullRecipe">
                         <p class="title">${recipe.strMeal}</p>
                         <img src="${recipe.strMealThumb}" alt="an image of ${recipe.strMeal}">
-                        <button class="exit hidden"><span aria-hidden>X</span><span class="visuallyHidden">Exit Button</span></button>
                         <div class="directions hidden">
                             <ul class="measurements"></ul> 
                             <ul class="ingredients"></ul>
@@ -108,6 +109,7 @@ recipeGenApp.categoriesQuery = function(){
                             </div>
                         </div>
                     </li>
+                    <button class="exit hidden"><span aria-hidden>X</span><span class="visuallyHidden">Exit Button</span></button>
                     `);
 
                     finalIngredients.forEach((ing)=> {
@@ -126,11 +128,35 @@ recipeGenApp.categoriesQuery = function(){
                     finalIngredients.length = 0;
                     finalMeasurements.length = 0;
                 })
-            });
-    })
+                
+            }); 
+
+    });
 };
 
 
+
+//MONDAY CODE
+
+// .then(()=>{
+//     if ($('div.directions').hasClass('hidden')){
+//         $('ul.recipePreviews').on('click','li.fullRecipe',function(){
+//             console.log('li was clicked');
+//             $(this).find('div.directions').removeClass('hidden');
+//             $(this).find('button.exit').removeClass('hidden');
+//         }
+//         )}
+//     if ($('div.directions').hasClass('hidden')===false){
+//         $('ul.RecipePreviews').on('click', 'li.fullRecipe', function(){
+//             console.log('li was clicked again');
+//             $(this).find('div.directions').addClass('hidden');
+//             $(this).find('button.exit').addClass('hidden');
+//             })
+//     }})
+
+
+
+//OTHER CODE
 
 // const instructionsArr = res.meals.map(recipe => recipe.strInstructions)
                 // //LINE BELOW IS ALEX'S CODE + our modifications
