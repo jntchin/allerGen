@@ -2,6 +2,8 @@ const recipeGenApp = {};
 const apiUrlFilterByMainIngredient = 'https://www.themealdb.com/api/json/v1/1/filter.php'; 
 const apiUrlReturnRecipesByID = 'https://www.themealdb.com/api/json/v1/1/lookup.php';
 
+
+
 //BUTTON
 $('form').on('submit', function(e){
     e.preventDefault();
