@@ -222,38 +222,41 @@ textarea {
 }
 
 h1 {
-  font-family: "BioRhyme", serif;
+  font-family: "Bree Serif", serif;
   font-size: 2rem;
 }
 
 h2 {
-  font-family: "Cabin", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 form {
-  font-family: "Cabin", sans-serif;
+  font-family: "Open Sans", sans-serif;
+}
+
+p.title {
+  font-family: "Patua One", cursive;
 }
 
 .measurements {
-  font-family: "Cabin", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 800;
 }
 
 .ingredients {
-  font-family: "Cabin", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 li {
-  font-family: "Cabin", sans-serif;
-  font-style: italic;
+  font-family: "Open Sans", sans-serif;
 }
 
 li p {
-  font-family: "Cabin", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 footer {
-  font-family: "Cabin", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 html {
@@ -265,13 +268,13 @@ body {
 }
 
 .userChoices {
-  background: #5bafe1;
-  color: black;
+  background: #9bc53d;
+  color: #181818;
 }
 
 .recipes {
-  background: #fde74c;
-  color: black;
+  background: #ff8f44;
+  color: #181818;
 }
 
 .hidden {
@@ -290,13 +293,29 @@ ul.recipePreviews {
   display: grid;
   -ms-grid-columns: (minmax(170px, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  grid-gap: 1%;
   list-style-type: none;
   padding: 0;
 }
 
 ul.recipePreviews li {
   width: 100%;
+}
+
+ul.recipePreviews li div.recipeTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  max-height: 60px;
+  min-height: 60px;
+  text-align: center;
+  background-color: #e55934;
+  padding: 5%;
 }
 
 img {
@@ -307,7 +326,7 @@ footer {
   width: 100%;
   margin-bottom: 0;
   padding: 0.5% 0;
-  background: #5bafe1;
+  background: #e55934;
 }
 
 footer p {

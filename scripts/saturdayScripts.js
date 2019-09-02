@@ -107,7 +107,9 @@ recipeGenApp.categoriesQuery = function(){
                     
                     $('ul.recipePreviews').append(`
                     <li class="recipe${count} fullRecipe">
-                        <p class="title">${recipe.strMeal}</p>
+                        <div class="recipeTitle">
+                        	<p class="title">${recipe.strMeal}</p>
+                        </div>
                         <img src="${recipe.strMealThumb}" alt="an image of ${recipe.strMeal}">
                         <div class="directions hidden">
                             <ul class="measurements"></ul> 

@@ -1,7 +1,9 @@
 // @import 'variables';
 
-$h1Font:'BioRhyme', serif;
-$baseFont:'Cabin', sans-serif;
+$h1Font:'Bree Serif', serif;
+$recipeTitleFont: 'Patua One', cursive;
+$baseFont:'Open Sans', sans-serif;
+
 
 h1{
     font-family: ($h1Font);
@@ -16,6 +18,10 @@ form{
     font-family: ($baseFont);
 }
 
+p.title{
+    font-family: ($recipeTitleFont);
+}
+
 .measurements{
     font-family: ($baseFont);
     font-weight: 800;
@@ -27,7 +33,7 @@ form{
 
 li{
     font-family: ($baseFont);
-    font-style: italic; 
+    // font-style: italic; 
 }
 
 li p{
