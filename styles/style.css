@@ -264,21 +264,6 @@ body {
   background: #fde74c;
 }
 
-form {
-  max-width: 100%;
-  margin: 5%;
-}
-
-select {
-  float: left;
-  width: 40%;
-}
-
-fieldset {
-  float: left;
-  width: 40%;
-}
-
 .userChoices {
   background: #5bafe1;
   color: black;
@@ -289,12 +274,33 @@ fieldset {
   color: black;
 }
 
-ul {
-  list-style: none;
-}
-
 .hidden {
   display: none;
+}
+
+section.recipes {
+  width: 100%;
+}
+
+ul.recipePreviews {
+  width: 80%;
+  margin: 0 auto;
+  list-style: none;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(170px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  grid-gap: 1%;
+  list-style-type: none;
+  padding: 0;
+}
+
+ul.recipePreviews li {
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
 }
 
 footer {

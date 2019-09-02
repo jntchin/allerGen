@@ -19,13 +19,21 @@ const finalMeasurements = [];
 $('ul.recipePreviews').on('click','li.fullRecipe',function(){
     console.log('li was clicked');
     $(this).find('div.directions').removeClass('hidden');
-    $(this).siblings('button.exit').removeClass('hidden');
+    $(this).find('button.exit').removeClass('hidden');
+    $(this).addClass('currentRecipe')
+    $('section.recipes').prepend(this);
 })
     // $('ul.recipePreviews').on('click');
 
-$('ul.recipePreviews').on('click','button.exit',function(){
+$('section.recipes').on('click','button.exit',function(){
     console.log('exit was clicked');
-    $(this).siblings('li.fullRecipe').find('div.directions').addClass('hidden');
+    $('ul.recipePreviews').prepend($('li.currentRecipe'));
+    $('li.currentRecipe').find('div.directions').addClass('hidden');
+    $('li.currentRecipe').removeClass('currentRecipe');
+    $(this).addClass('hidden');
+
+    // $(this).find('li.fullRecipe').find('div.directions').addClass('hidden');
+
     // $('ul.recipePreviews').off('click');
     // $(this).parent.addClass('hidden');
 })
@@ -108,8 +116,8 @@ recipeGenApp.categoriesQuery = function(){
                                 <p>${recipe.strInstructions}</p>
                             </div>
                         </div>
+                        <button class="exit hidden"><span aria-hidden>X</span><span class="visuallyHidden">Exit Button</span></button>
                     </li>
-                    <button class="exit hidden"><span aria-hidden>X</span><span class="visuallyHidden">Exit Button</span></button>
                     `);
 
                     finalIngredients.forEach((ing)=> {

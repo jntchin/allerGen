@@ -16,22 +16,22 @@ body{
 
 //DROP-DOWN AND CHECKBOX STYLES
 
-form{
-    max-width: 100%;
-    margin: 5%;
-}
+// form{
+//     max-width: 100%;
+//     margin: 5%;
+// }
 
-select{
-    float: left;
-    width: 40%;
-    // padding: 2%;
-}
+// select{
+//     float: left;
+//     width: 40%;
+//     // padding: 2%;
+// }
 
-fieldset{
-    float: left;
-    width: 40%;
-    // padding: 2%;
-}
+// fieldset{
+//     float: left;
+//     width: 40%;
+//     // padding: 2%;
+// }
 
 .userChoices{
     background: ($blue);
@@ -45,13 +45,37 @@ fieldset{
     color: black;
 }
 
-ul{
-    list-style: none;
-}
 
 .hidden {
     display: none;
 }
+
+//GRID STYLES
+
+section.recipes{
+    width: 100%;
+}
+
+ul.recipePreviews{
+    width: 80%;
+    margin: 0 auto;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    grid-gap: 1%;
+    list-style-type: none;
+    padding: 0;
+        li{
+            width: 100%;
+        }
+}
+
+
+img{
+    max-width: 100%;
+}
+
+
 
 //FOOTER STYLES
 
