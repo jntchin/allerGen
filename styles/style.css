@@ -223,6 +223,12 @@ textarea {
 
 i {
   color: #ff761b;
+  font-family: "Bree Serif", serif;
+  font-size: 5rem;
+  text-align: center;
+  margin-bottom: 2%;
+  text-shadow: 1px 1px 1px rgba(24, 24, 24, 0.5);
+  display: inline-block;
 }
 
 h1 {
@@ -232,12 +238,39 @@ h1 {
   margin-bottom: 2%;
   color: #F9F3FD;
   text-shadow: 1px 1px 1px rgba(24, 24, 24, 0.5);
+  display: inline-block;
+}
+
+@media (max-width: 612px) {
+  h1, i {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  h1, i {
+    font-size: 2.5rem;
+  }
 }
 
 h3 {
   font-family: "Patua One", cursive;
   color: #F9F3FD;
   text-shadow: 1px 1px 1px rgba(24, 24, 24, 0.5);
+}
+
+@media (max-width: 558px) {
+  h3 {
+    width: 270px;
+    margin: 0 auto;
+    line-height: 1.4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  h3 {
+    font-size: 0.9rem;
+  }
 }
 
 h2 {
@@ -247,6 +280,18 @@ h2 {
 li.currentRecipe h2 {
   font-size: 3rem;
   font-family: "Patua One", cursive;
+}
+
+@media (max-width: 590px) {
+  li.currentRecipe h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 320px) {
+  li.currentRecipe h2 {
+    font-size: 1.7rem;
+  }
 }
 
 form {
@@ -259,8 +304,19 @@ form {
   font-size: .8rem;
   letter-spacing: .07rem;
   text-align: right;
-  margin-right: 15px;
   line-height: 1.2rem;
+}
+
+@media (max-width: 420px) {
+  .measurements {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .measurements {
+    font-size: 0.5rem;
+  }
 }
 
 .ingredients {
@@ -270,10 +326,28 @@ form {
   line-height: 1.2rem;
 }
 
+@media (max-width: 420px) {
+  .ingredients {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .ingredients {
+    font-size: 0.5rem;
+  }
+}
+
 .instructions {
   font-size: .8rem;
   letter-spacing: .07rem;
   line-height: 1.2rem;
+}
+
+@media (max-width: 420px) {
+  .instructions {
+    font-size: .7rem;
+  }
 }
 
 li {
@@ -294,14 +368,17 @@ html {
 }
 
 body {
-  background: #0f7e0b;
+  background: #ff761b;
   max-width: 1280px;
+  width: 100%;
+  height: 100vh;
   margin: 0 auto;
 }
 
 header {
-  padding: 5% 0;
+  padding: 4% 0;
   text-align: center;
+  background: #0f7e0b;
 }
 
 .userChoices {
@@ -339,6 +416,13 @@ form p {
   width: 30%;
 }
 
+@media (max-width: 612px) {
+  .dropDown {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
 .dropDown p {
   font-family: "Bree Serif", serif;
 }
@@ -352,16 +436,36 @@ form p {
   padding: 3px 0 5px 5px;
 }
 
+@media (max-width: 612px) {
+  .dropDown select {
+    width: 100%;
+  }
+}
+
 .radioButtons {
   width: 35%;
 }
 
+@media (max-width: 612px) {
+  .radioButtons {
+    width: 100%;
+    margin: 0 auto 15px;
+  }
+}
+
 .radioButtons fieldset {
-  width: 60%;
+  width: 100%;
+  min-width: 180px;
 }
 
 .radioButtons fieldset p {
   font-family: "Bree Serif", serif;
+}
+
+@media (max-width: 612px) {
+  .radioButtons fieldset p {
+    margin-bottom: 15px;
+  }
 }
 
 .radioButtonsWrapper {
@@ -389,7 +493,7 @@ form p {
 }
 
 div.radioButton {
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 .recipeButton,
@@ -399,16 +503,36 @@ div.radioButton {
   text-align: center;
 }
 
+@media (max-width: 612px) {
+  .recipeButton,
+  .clearButton {
+    width: 100%;
+    margin: 0 auto 15px;
+    text-align: center;
+  }
+}
+
 .recipeButton button,
 .clearButton button {
   border: 1px solid rgba(24, 24, 24, 0.5);
   width: 90%;
   padding: 3px 0 5px 5px;
+  background: #0f7e0b;
+  color: #F9F3FD;
+  font-family: "Patua One", cursive;
+}
+
+@media (max-width: 612px) {
+  .recipeButton button,
+  .clearButton button {
+    width: 100%;
+  }
 }
 
 .recipes {
   background: #ff761b;
   color: #181818;
+  position: relative;
 }
 
 .hidden {
@@ -466,21 +590,15 @@ img {
   margin: 0 auto;
 }
 
+@media (max-width: 590px) {
+  .wrapper {
+    max-width: 90%;
+  }
+}
+
 li.currentRecipe {
   background: #F9F3FD;
   padding-top: 40px;
-}
-
-li.currentRecipe .wrapper {
-  position: relative;
-}
-
-li.currentRecipe .wrapper div.directions {
-  background: #F9F3FD;
-  padding: 7% 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 button.exit {
@@ -492,6 +610,13 @@ button.exit {
   font-size: 2rem;
   -webkit-transform: scaleY(0.8);
           transform: scaleY(0.8);
+}
+
+@media (max-width: 590px) {
+  button.exit {
+    right: 5px;
+    top: 5px;
+  }
 }
 
 li.currentRecipe div.container div.titleAndImage {
@@ -511,12 +636,35 @@ li.currentRecipe div.container div.titleAndImage {
   max-height: 300px;
 }
 
+@media (max-width: 590px) {
+  li.currentRecipe div.container div.titleAndImage {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    max-height: unset;
+  }
+}
+
 li.currentRecipe div.container div.titleAndImage .recipeTitle {
   width: 50%;
 }
 
 li.currentRecipe div.container div.titleAndImage .recipeTitle h2 {
   width: 300px;
+}
+
+@media (max-width: 850px) {
+  li.currentRecipe div.container div.titleAndImage .recipeTitle {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 590px) {
+  li.currentRecipe div.container div.titleAndImage .recipeTitle {
+    width: unset;
+  }
 }
 
 li.currentRecipe div.container div.titleAndImage div.imageWrapper {
@@ -535,6 +683,12 @@ li.currentRecipe div.container div.titleAndImage div.imageWrapper {
   max-height: 300px;
 }
 
+@media (max-width: 850px) {
+  li.currentRecipe div.container div.titleAndImage div.imageWrapper {
+    margin-right: 10px;
+  }
+}
+
 li.currentRecipe img {
   max-width: 100%;
   max-height: inherit;
@@ -542,25 +696,99 @@ li.currentRecipe img {
      object-fit: cover;
 }
 
+@media (max-width: 590px) {
+  li.currentRecipe img {
+    min-width: 270px;
+  }
+}
+
+li.currentRecipe div.directions {
+  background: #F9F3FD;
+  padding: 7% 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (max-width: 960px) {
+  li.currentRecipe div.directions {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
 .measurements {
   min-width: 200px;
+  margin-right: 7.5px;
+}
+
+@media (max-width: 960px) {
+  .measurements {
+    -ms-flex-preferred-size: calc(50%-7.5px);
+        flex-basis: calc(50%-7.5px);
+  }
+}
+
+@media (max-width: 590px) {
+  .measurements {
+    min-width: unset;
+  }
+}
+
+@media (max-width: 420px) {
+  .measurements {
+    margin-right: 3px;
+  }
 }
 
 .ingredients {
   min-width: 250px;
+  margin-left: 7.5px;
+}
+
+@media (max-width: 960px) {
+  .ingredients {
+    -ms-flex-preferred-size: calc(50%-7.5px);
+        flex-basis: calc(50%-7.5px);
+  }
+}
+
+@media (max-width: 590px) {
+  .ingredients {
+    min-width: unset;
+  }
+}
+
+@media (max-width: 420px) {
+  .ingredients {
+    margin-left: 3px;
+  }
 }
 
 .instructions {
   max-width: 50%;
 }
 
+@media (max-width: 960px) {
+  .instructions {
+    max-width: unset;
+    margin-top: 30px;
+  }
+}
+
 footer {
   width: 100%;
-  margin-bottom: 0;
+  max-width: 1280px;
+  margin: 0 auto;
   padding: 0.5% 0;
   background: #181818;
   color: #F9F3FD;
   text-align: center;
+  position: fixed;
+  bottom: 0;
 }
 
 footer p {

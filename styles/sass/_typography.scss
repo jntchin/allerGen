@@ -1,7 +1,15 @@
 @import 'variables';
 
+
+
 i{
     color: ($orange);
+    font-family: ($h1Font);
+    font-size: 5rem;
+    text-align: center;
+    margin-bottom: 2%;
+    text-shadow: 1px 1px 1px rgba(24, 24, 24, .5);
+    display: inline-block;
 }
 
 h1{
@@ -11,12 +19,31 @@ h1{
     margin-bottom: 2%;
     color: ($lightgrey);
     text-shadow: 1px 1px 1px rgba(24, 24, 24, .5);
+    display: inline-block;
+}
+
+h1, i{
+    @media(max-width: 612px){
+        font-size: 3.5rem;
+    }
+    @media(max-width: 400px){
+        font-size: 2.5rem;
+    }
 }
 
 h3{
     font-family: ($recipeTitleFont);
     color: ($lightgrey);
     text-shadow: 1px 1px 1px rgba(24, 24, 24, .5);
+        @media(max-width: 558px){
+            width: 270px;
+            margin: 0 auto;
+            line-height: 1.4rem;
+        }
+        @media(max-width: 400px){
+            font-size: 0.9rem;
+        }
+
 }
 
 h2{
@@ -26,6 +53,12 @@ h2{
 li.currentRecipe h2{
     font-size: 3rem;
     font-family: ($recipeTitleFont);
+        @media(max-width: 590px){
+            font-size: 2rem;
+        }
+        @media(max-width: 320px){
+            font-size: 1.7rem;
+        }
 }
 
 form{
@@ -38,8 +71,13 @@ form{
     font-size: .8rem;
     letter-spacing: .07rem;
     text-align: right;
-    margin-right: 15px;
     line-height: 1.2rem;
+        @media(max-width: 420px){
+            font-size: 0.6rem;
+        }
+        @media(max-width: 320px){
+            font-size: 0.5rem;
+        }
 }
 
 .ingredients{
@@ -47,12 +85,21 @@ form{
     font-size: .8rem;
     letter-spacing: .07rem;
     line-height: 1.2rem;
+        @media(max-width: 420px){
+            font-size: 0.6rem;
+        }
+        @media(max-width: 320px){
+            font-size: 0.5rem;
+        }
 }
 
 .instructions{
     font-size: .8rem;
     letter-spacing: .07rem;
     line-height: 1.2rem;
+        @media(max-width: 420px){
+            font-size: .7rem;
+        };
 }
 
 li{

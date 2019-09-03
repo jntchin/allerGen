@@ -14,18 +14,21 @@ html{
 }
 
 body{
-    background: ($green);
+    background: ($orange);
     max-width: 1280px;
+    width: 100%;
+    height: 100vh;
     margin: 0 auto;
-    // height: 100vh;
 }
 
 //HEADER STYLES
 
 header{
-    padding: 5% 0;
+    padding: 4% 0;
     text-align: center;
+    background: ($green);
 }
+
 
 //DROP-DOWN AND CHECKBOX STYLES
 
@@ -35,8 +38,6 @@ header{
     max-width: 100%;
     padding-left: 20px;
     padding-right: 20px;
-    // padding: 5%;
-    // height: 40vh;
 }
 
 form{
@@ -49,6 +50,9 @@ form{
     justify-content: space-between;
     align-items: center;
     font-size: 0.8rem; 
+        // @media(max-width: 612px){
+        //     display: block;
+        // }
         p{
             display: block;
         }
@@ -56,6 +60,11 @@ form{
 
 .dropDown{
     width: 30%;
+        @media(max-width: 612px){
+            width: 100%;
+            margin: 0 auto;
+            // text-align: center;
+        }
         p{
             font-family: ($h1Font);
         }
@@ -64,15 +73,26 @@ form{
             align-items: center;
             margin: 25px 0;
             padding: 3px 0 5px 5px ;
+                @media(max-width: 612px){
+                    width: 100%;
+                }
         }
 }
 
 .radioButtons{
     width: 35%;
+        @media(max-width: 612px){
+            width: 100%;
+            margin: 0 auto 15px;
+        }
         fieldset{
-            width: 60%;
+            width: 100%;
+            min-width: 180px;
                 p{
                     font-family: ($h1Font);
+                    @media(max-width: 612px){
+                        margin-bottom: 15px;
+                    }
                 }
         }
 }
@@ -93,7 +113,7 @@ form{
 
 
 div.radioButton{
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 
 .recipeButton, 
@@ -101,11 +121,23 @@ div.radioButton{
     width: 30%;
     margin-top: 10px;
     text-align: center;
+        @media(max-width: 612px){
+            width: 100%;
+            margin: 0 auto 15px;
+            text-align: center;
+        }
         button{
             border: 1px solid rgba(24, 24, 24, 0.5);
             width: 90%;
             padding: 3px 0 5px 5px;
+            background: ($green);
+            color: ($lightgrey);
+            font-family: ($recipeTitleFont);
+                @media(max-width: 612px){
+                    width: 100%;
+                }
         }
+
 }
 
 //RECIPE STYLES
@@ -113,6 +145,7 @@ div.radioButton{
 .recipes{
     background: ($orange);
     color: ($darkgrey);
+    position: relative;
 }
 
 
@@ -162,19 +195,17 @@ img{
 .wrapper{
     max-width: 80%;
     margin: 0 auto;
+        @media(max-width: 590px){
+            max-width: 90%;
+        }
 }
 
 li.currentRecipe {
     background: ($lightgrey);
     padding-top: 40px;
-        .wrapper{
-            position: relative;
-                div.directions{
-                    background: ($lightgrey);
-                    padding: 7% 0;
-                    display: flex;   
-                }
-        }  
+        // .container{
+        //     position: relative;
+        // }  
 }
 
 button.exit{
@@ -184,7 +215,11 @@ button.exit{
     border: none;
     background: none;
     font-size: 2rem;
-    transform: scaleY(.8)
+    transform: scaleY(.8);
+        @media(max-width: 590px){
+            right: 5px;
+            top: 5px;
+        }
 }
 
 
@@ -193,14 +228,24 @@ li.currentRecipe div.container div.titleAndImage{
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
-    max-height: 300px;
-    // margin-top: 40px;
+    max-height: 300px;   
+        @media(max-width: 590px){
+            flex-wrap: wrap;
+            justify-content: center;
+            max-height: unset;
+        }
 }
 
 li.currentRecipe div.container div.titleAndImage .recipeTitle{
     width: 50%;
         h2{
             width: 300px;
+        }
+        @media(max-width: 850px){
+            margin-left: 10px;
+        }
+        @media(max-width: 590px){
+            width: unset;
         }
 }
 
@@ -212,6 +257,9 @@ li.currentRecipe div.container div.titleAndImage div.imageWrapper{
     max-width: 50%;
     min-height: 300px;
     max-height: 300px;
+        @media(max-width: 850px){
+            margin-right: 10px;
+        }
     // position: relative;
     // display: none;
     // background: red;
@@ -222,31 +270,69 @@ li.currentRecipe img{
     max-width: 100%;
     max-height: inherit;
     object-fit: cover;
+        @media(max-width: 590px){
+            min-width: 270px;
+        }
+}
+
+li.currentRecipe div.directions{
+    background: ($lightgrey);
+    padding: 7% 0;
+    display: flex;
+    justify-content: center;
+        @media(max-width: 960px){   
+        flex-wrap: wrap;
+        }
 }
 
 .measurements{
     min-width: 200px;
-    // background: ($lightgrey);
+    margin-right: 7.5px;
+        @media(max-width: 960px){
+            flex-basis: calc(50%-7.5px);
+        }
+        @media(max-width: 590px){
+            min-width: unset;   
+        }
+        @media(max-width: 420px){
+            margin-right: 3px;
+        }
 }
 
 .ingredients{
     min-width: 250px;
-    // background: ($lightgrey);
+    margin-left: 7.5px;
+        @media(max-width: 960px){
+            flex-basis: calc(50%-7.5px);
+        }
+        @media(max-width: 590px){
+            min-width: unset;
+        }
+        @media(max-width: 420px){
+            margin-left: 3px;
+        }
 }
 
 .instructions{
     max-width: 50%;
+        @media(max-width: 960px){
+            max-width: unset;
+            margin-top: 30px;
+        }
 }
 
 //FOOTER STYLES
 
 footer{
     width: 100%;
-    margin-bottom: 0;
+    max-width: 1280px;
+    margin: 0 auto;
     padding: 0.5% 0;
     background:($darkgrey);
     color: ($lightgrey);
     text-align: center;
+    position: fixed;
+    bottom: 0;
         p{
             display: inline-block;
             text-align: center;
