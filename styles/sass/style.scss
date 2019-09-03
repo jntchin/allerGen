@@ -150,13 +150,14 @@ li.currentRecipe div.container div.titleAndImage div.imageWrapper{
     max-width: 50%;
     min-height: 300px;
     max-height: 300px;
+    // position: relative;
     // display: none;
-    // background: red;
+    background: red;
 }
 
 
 li.currentRecipe img{
-    // display: none;
+    display: block;
     max-width: 100%;
     max-height: inherit;
     // height: auto;
