@@ -438,11 +438,9 @@ li.currentRecipe div.container div.titleAndImage div.imageWrapper {
   max-width: 50%;
   min-height: 300px;
   max-height: 300px;
-  background: red;
 }
 
 li.currentRecipe img {
-  display: block;
   max-width: 100%;
   max-height: inherit;
   -o-object-fit: cover;
