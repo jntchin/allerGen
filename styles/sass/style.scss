@@ -135,9 +135,11 @@ ul.recipePreviews{
     grid-row-gap: 15px;
     grid-column-gap: 15px;
     list-style-type: none;
-    padding: 8% 0;
+    padding: 5% 0;
         li{
             width: 100%;
+            max-width: 300px;
+            box-shadow: 2px 2px 2px rgba(24, 24, 24, .5);
                 div.recipeTitle{
                     display: flex;
                     align-items: center;

@@ -83,7 +83,7 @@ recipeGenApp.categoriesQuery = function(){
                     }
                      //append the following HTML to the ul.recipePreviews section:
                     $('ul.recipePreviews').append(`
-                    <li class="recipe${count} fullRecipe">
+                    <li class="recipe${count} fullRecipe" tabindex="0">
                             <div class="container">
                                 <div class="titleAndImage">
                                     <div class="recipeTitle">
@@ -100,7 +100,7 @@ recipeGenApp.categoriesQuery = function(){
                                         <p>${recipe.strInstructions}</p>
                                     </div>
                                 </div>
-                                <button class="exit hidden"><span aria-hidden>X</span><span class="visuallyHidden">Exit Button</span></button>
+                                <button class="exit hidden" tabindex="0"><span aria-hidden>X</span><span class="visuallyHidden">Exit Button</span></button>
                             </div>
                     </li>
                     `);
@@ -126,12 +126,21 @@ recipeGenApp.categoriesQuery = function(){
 
 //function to show full recipe when user clicks on any recipe preview (li) 
 recipeGenApp.showRecipe = function(){
-    $('ul.recipePreviews').on('click','li.fullRecipe',function(){
+    $('ul.recipePreviews').on('click', 'li.fullRecipe', function(){
         $(this).find('div.directions').removeClass('hidden');
         $(this).find('button.exit').removeClass('hidden');
         $(this).addClass('currentRecipe')
         $(this).find('div.container').addClass('wrapper');
         $('section.recipes').prepend(this);
+    })
+    $('ul.recipePreviews').on('keydown', 'li.fullRecipe', function(e){
+        if (e.which == 13 || e.which == 32){
+            $(this).find('div.directions').removeClass('hidden');
+            $(this).find('button.exit').removeClass('hidden');
+            $(this).addClass('currentRecipe')
+            $(this).find('div.container').addClass('wrapper');
+            $('section.recipes').prepend(this);
+        }
     })
 }
 
@@ -144,6 +153,16 @@ recipeGenApp.hideRecipe = function(){
         $('li.currentRecipe').removeClass('currentRecipe');
         $(this).addClass('hidden');
     })
+    $('section.recipes').on('keydown', 'button.exit', function(e){
+        if (e.which == 13 || e.which == 32){
+            $('ul.recipePreviews').prepend($('li.currentRecipe'));
+            $('li.currentRecipe').find('div.directions').addClass('hidden');
+            $('li.currentRecipe').find('div.container').removeClass('wrapper')
+            $('li.currentRecipe').removeClass('currentRecipe');
+            $(this).addClass('hidden');
+        }
+    })
+
 };
 
 
