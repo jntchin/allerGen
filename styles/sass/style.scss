@@ -2,38 +2,51 @@
 @import 'variables';
 @import 'typography';
 
-*{
-    border: 7px solid tomato;
-}
+// *{
+//     border: 7px solid tomato;
+// }
 
 //GENERAL STYLES
 
 html{
     font-size: 125%;
+    background: ($lightgrey);
 }
 
 body{
     background: ($yellow);
+    max-width: 1280px;
+    margin: 0 auto;
+    height: 100vh;
 }
 
-//DROP-DOWN AND CHECKBOX STYLES
+//HEADER STYLES
 
-// form{
-//     max-width: 100%;
-//     margin: 5%;
-// }
+header{
+    padding: 5% 0;
+    text-align: center;
+}
 
-// select{
-//     float: left;
-//     width: 40%;
-//     // padding: 2%;
-// }
+DROP-DOWN AND CHECKBOX STYLES
 
-// fieldset{
-//     float: left;
-//     width: 40%;
-//     // padding: 2%;
-// }
+form{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    max-width: 100%;
+    // margin: 5%;
+        p{
+            display: inline-block;
+        }
+}
+
+.dropDown{
+    width: 40%;
+}
+
+.radioButtons{
+    width: 40%;
+}
 
 .userChoices{
     background: ($green);
@@ -96,7 +109,7 @@ img{
 }
 
 li.currentRecipe {
-    background: ($lightgrey);
+    // background: ($lightgrey);
         .wrapper{
             position: relative;
                 div.directions{
@@ -119,6 +132,7 @@ li.currentRecipe div.container div.titleAndImage{
     justify-content: space-between;
     align-items: center;
     max-height: 300px;
+    margin-top: 40px;
 }
 
 li.currentRecipe div.container div.titleAndImage .recipeTitle{
@@ -129,18 +143,23 @@ li.currentRecipe div.container div.titleAndImage .recipeTitle{
 }
 
 li.currentRecipe div.container div.titleAndImage div.imageWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 50%;
     max-width: 50%;
     min-height: 300px;
     max-height: 300px;
     // display: none;
-    background: red;
+    // background: red;
 }
 
 
 li.currentRecipe img{
+    // display: none;
     max-width: 100%;
     max-height: inherit;
+    // height: auto;
     object-fit: cover;
 }
 
@@ -170,8 +189,11 @@ footer{
     margin-bottom: 0;
     padding: 0.5% 0;
     background: ($red);
+    text-align: center;
+    height: 5vh;
         p{
             display: inline-block;
             text-align: center;
+            font-size: 0.8rem;
         }
 }
