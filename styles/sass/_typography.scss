@@ -1,10 +1,22 @@
 @import 'variables';
 
+i{
+    color: ($orange);
+}
+
 h1{
     font-family: ($h1Font);
     font-size: 5rem;
     text-align: center;
     margin-bottom: 2%;
+    color: ($lightgrey);
+    text-shadow: 1px 1px 1px rgba(24, 24, 24, .5);
+}
+
+h3{
+    font-family: ($recipeTitleFont);
+    color: ($lightgrey);
+    text-shadow: 1px 1px 1px rgba(24, 24, 24, .5);
 }
 
 h2{
@@ -13,6 +25,7 @@ h2{
 
 li.currentRecipe h2{
     font-size: 3rem;
+    font-family: ($recipeTitleFont);
 }
 
 form{
@@ -23,23 +36,23 @@ form{
     font-family: ($baseFont);
     font-weight: 800;
     font-size: .8rem;
-    letter-spacing: .05rem;
+    letter-spacing: .07rem;
     text-align: right;
     margin-right: 15px;
-    line-height: 1rem;
+    line-height: 1.2rem;
 }
 
 .ingredients{
     font-family: ($baseFont);
     font-size: .8rem;
-    letter-spacing: .05rem;
-    line-height: 1rem;
+    letter-spacing: .07rem;
+    line-height: 1.2rem;
 }
 
 .instructions{
     font-size: .8rem;
-    letter-spacing: .05rem;
-    line-height: 1rem;
+    letter-spacing: .07rem;
+    line-height: 1.2rem;
 }
 
 li{

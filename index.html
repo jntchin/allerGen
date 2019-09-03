@@ -8,17 +8,19 @@
     <title>Jess & Seth do Project 4!</title>
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:400,400i|Patua+One&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/7b8d56d327.js"></script>
 </head>
 <body>
     <header>
-        <h1>Aller-gen</h1>
-        <h2>The recipe generator for people with food restrictions</h2>
+        <h1><i class="fas fa-carrot"></i> Aller-gen <i class="fas fa-carrot"></i></h1>
+        <h3>The recipe generator for people with food restrictions!</h3>
     </header>
     <main>
         <section class="userChoices">
-            <form action="">
+            <form class="wrapper" action="">
                 <div class="dropDown">
-                    <p>I want to eat</p>
+                    <p>I want to eat:</p>
                     <select name="mainIngredients" id="">
                         <option value="chicken">Chicken</option>
                         <option value="seafood">Seafood</option>
@@ -33,37 +35,60 @@
                     <fieldset>
                         <p>I can't eat:</p>
                         
-                        <input type="radio" id="peanuts" value="peanuts" name="allergen">
-                        <label for="peanuts">Peanuts</label>
-    
-                        <input type="radio" id="nuts" value="nuts" name="allergen">
-                        <label for="nuts">Tree nuts</label>
-    
-                        <input type="radio" id="milk" value="dairy" name="allergen">
-                        <label for="milk">Dairy</label>
-    
-                        <input type="radio" id="eggs" value="eggs" name="allergen">
-                        <label for="eggs">Eggs</label>
-                        
-                        <input type="radio" id="gluten" value="gluten" name="allergen">
-                        <label for="wheat">Gluten</label>
-    
-                        <input type="radio" id="soy" value="soy" name="allergen">
-                        <label for="soy">Soy</label>
-    
-                        <input type="radio" id="fish" value="fish" name="allergen">
-                        <label for="fish">Fish</label>
-    
-                        <input type="radio" id="shellfish" value="shellfish" name="allergen">
-                        <label for="shellfish">Shellfish</label>
+                        <div class="radioButtonsWrapper">
+                            <div class="radioButtonsLeft">
+                                <div class="radioButton">
+                                    <input type="radio" id="peanuts" value="peanuts" name="allergen">
+                                    <label for="peanuts">Peanuts</label>
+                                </div>
+            
+                                <div class="radioButton">
+                                    <input type="radio" id="nuts" value="nuts" name="allergen">
+                                    <label for="nuts">Tree nuts</label>
+                                </div>
+        
+                                <div class="radioButton">
+                                    <input type="radio" id="milk" value="dairy" name="allergen">
+                                    <label for="milk">Dairy</label>
+                                </div>
+            
+                                <div class="radioButton">
+                                    <input type="radio" id="eggs" value="eggs" name="allergen">
+                                    <label for="eggs">Eggs</label>
+                                </div>
+                            </div>
+                            
+                            <div class="radioButtonsRight">
+                                <div class="radioButton">
+                                    <input type="radio" id="gluten" value="gluten" name="allergen">
+                                    <label for="wheat">Gluten</label>
+                                </div>
+            
+                                <div class="radioButton">
+                                    <input type="radio" id="soy" value="soy" name="allergen">
+                                    <label for="soy">Soy</label>
+                                </div>
+        
+                                <div class="radioButton">
+                                    <input type="radio" id="fish" value="fish" name="allergen">
+                                    <label for="fish">Fish</label>
+                                </div>
+            
+                                <div class="radioButton">
+                                    <input type="radio" id="shellfish" value="shellfish" name="allergen">
+                                    <label for="shellfish">Shellfish</label>
+                                </div>
+                            </div>
+                        </div>
                     </fieldset>
                 </div>
-                <button class="generateRecipes" type="submit">What's on the menu?</button>
+                <div class="recipeButton">
+                    <button class="generateRecipes" type="submit">What's on the menu?</button>
+                    <button class="refreshButton hidden" onClick="history.go(0);">Start from scratch!</button>
+                </div>
             </form>
         </section>
-        <section class="clearButton">
-                <button class="refreshButton hidden" onClick="history.go(0);">Start from scratch!</button>
-        </section>
+        
         <section class="recipes">
             <ul class="recipePreviews">
             </ul>
