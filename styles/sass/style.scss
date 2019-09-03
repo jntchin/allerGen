@@ -2,9 +2,6 @@
 @import 'variables';
 @import 'typography';
 
-// *{
-//     border: 2px solid black;
-// }
 
 //GENERAL STYLES
 
@@ -50,9 +47,6 @@ form{
     justify-content: space-between;
     align-items: center;
     font-size: 0.8rem; 
-        // @media(max-width: 612px){
-        //     display: block;
-        // }
         p{
             display: block;
         }
@@ -63,7 +57,6 @@ form{
         @media(max-width: 612px){
             width: 100%;
             margin: 0 auto;
-            // text-align: center;
         }
         p{
             font-family: ($h1Font);
@@ -203,9 +196,6 @@ img{
 li.currentRecipe {
     background: ($lightgrey);
     padding-top: 40px;
-        // .container{
-        //     position: relative;
-        // }  
 }
 
 button.exit{
@@ -260,9 +250,6 @@ li.currentRecipe div.container div.titleAndImage div.imageWrapper{
         @media(max-width: 850px){
             margin-right: 10px;
         }
-    // position: relative;
-    // display: none;
-    // background: red;
 }
 
 
