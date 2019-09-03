@@ -227,24 +227,38 @@ h1 {
 }
 
 h2 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Patua One", cursive;
+}
+
+li.currentRecipe h2 {
+  font-size: 3rem;
 }
 
 form {
   font-family: "Open Sans", sans-serif;
 }
 
-p.title {
-  font-family: "Patua One", cursive;
-}
-
 .measurements {
   font-family: "Open Sans", sans-serif;
   font-weight: 800;
+  font-size: .8rem;
+  letter-spacing: .05rem;
+  text-align: right;
+  margin-right: 15px;
+  line-height: 1rem;
 }
 
 .ingredients {
   font-family: "Open Sans", sans-serif;
+  font-size: .8rem;
+  letter-spacing: .05rem;
+  line-height: 1rem;
+}
+
+.instructions {
+  font-size: .8rem;
+  letter-spacing: .05rem;
+  line-height: 1rem;
 }
 
 li {
@@ -257,6 +271,10 @@ li p {
 
 footer {
   font-family: "Open Sans", sans-serif;
+}
+
+* {
+  border: 7px solid tomato;
 }
 
 html {
@@ -322,6 +340,81 @@ ul.recipePreviews li div.recipeTitle {
 
 img {
   max-width: 100%;
+}
+
+.wrapper {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+li.currentRecipe {
+  background: #F9F3FD;
+}
+
+li.currentRecipe .wrapper {
+  position: relative;
+}
+
+li.currentRecipe .wrapper div.directions {
+  background: #F9F3FD;
+  padding: 7% 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+button.exit {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+li.currentRecipe div.container div.titleAndImage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-height: 300px;
+}
+
+li.currentRecipe div.container div.titleAndImage .recipeTitle {
+  width: 50%;
+}
+
+li.currentRecipe div.container div.titleAndImage .recipeTitle h2 {
+  width: 300px;
+}
+
+li.currentRecipe div.container div.titleAndImage div.imageWrapper {
+  width: 50%;
+  max-width: 50%;
+  min-height: 300px;
+  max-height: 300px;
+  background: red;
+}
+
+li.currentRecipe img {
+  max-width: 100%;
+  max-height: inherit;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.measurements {
+  min-width: 100px;
+}
+
+.ingredients {
+  min-width: 150px;
 }
 
 footer {

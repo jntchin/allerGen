@@ -30,44 +30,43 @@
                 <fieldset>
                     <p>I can't eat:</p>
                     
-                    <input type="checkbox" id="peanuts" value="peanuts">
+                    <input type="radio" id="peanuts" value="peanuts" name="allergen">
                     <label for="peanuts">Peanuts</label>
 
-                    <input type="checkbox" id="nuts" value="nuts">
+                    <input type="radio" id="nuts" value="nuts" name="allergen">
                     <label for="nuts">Tree nuts</label>
 
-                    <input type="checkbox" id="milk" value="dairy">
+                    <input type="radio" id="milk" value="dairy" name="allergen">
                     <label for="milk">Dairy</label>
 
-                    <input type="checkbox" id="eggs" value="eggs">
+                    <input type="radio" id="eggs" value="eggs" name="allergen">
                     <label for="eggs">Eggs</label>
                     
-                    <input type="checkbox" id="gluten" value="gluten">
+                    <input type="radio" id="gluten" value="gluten" name="allergen">
                     <label for="wheat">Gluten</label>
 
-                    <input type="checkbox" id="soy" value="soy">
+                    <input type="radio" id="soy" value="soy" name="allergen">
                     <label for="soy">Soy</label>
 
-                    <input type="checkbox" id="fish" value="fish">
+                    <input type="radio" id="fish" value="fish" name="allergen">
                     <label for="fish">Fish</label>
 
-                    <input type="checkbox" id="shellfish" value="shellfish">
+                    <input type="radio" id="shellfish" value="shellfish" name="allergen">
                     <label for="shellfish">Shellfish</label>
                 </fieldset>
-                <button type="submit">What's on the menu?</button>
+                <button class="generateRecipes" type="submit">What's on the menu?</button>
             </form>
         </section>
         <section class="clearButton">
-            <button class="refreshButton hidden" onClick="history.go(0);">Start from scratch!</button>
+                <button class="refreshButton hidden" onClick="history.go(0);">Start from scratch!</button>
         </section>
-
         <section class="recipes">
-
             <ul class="recipePreviews">
             </ul>
         </section>
-
+        
     </main>
+    
     <footer>
         <p>Copyright 2019 Seth Poulin and Jessica Chin</p>
     </footer>

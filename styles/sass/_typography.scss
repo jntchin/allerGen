@@ -1,9 +1,4 @@
-// @import 'variables';
-
-$h1Font:'Bree Serif', serif;
-$recipeTitleFont: 'Patua One', cursive;
-$baseFont:'Open Sans', sans-serif;
-
+@import 'variables';
 
 h1{
     font-family: ($h1Font);
@@ -11,24 +6,38 @@ h1{
 }
 
 h2{
-    font-family: ($baseFont);
+    font-family: ($recipeTitleFont);
+}
+
+li.currentRecipe h2{
+    font-size: 3rem;
 }
 
 form{
     font-family: ($baseFont);
 }
 
-p.title{
-    font-family: ($recipeTitleFont);
-}
-
 .measurements{
     font-family: ($baseFont);
     font-weight: 800;
+    font-size: .8rem;
+    letter-spacing: .05rem;
+    text-align: right;
+    margin-right: 15px;
+    line-height: 1rem;
 }
 
 .ingredients{
     font-family: ($baseFont);
+    font-size: .8rem;
+    letter-spacing: .05rem;
+    line-height: 1rem;
+}
+
+.instructions{
+    font-size: .8rem;
+    letter-spacing: .05rem;
+    line-height: 1rem;
 }
 
 li{

@@ -15,9 +15,11 @@ recipeGenApp.formSubmit = function(){
     })
 }
 
+
 recipeGenApp.categoriesQuery = function(){
+    $('button.generateRecipes').addClass('hidden');
     recipeGenApp.userMainIngredient = $('option:selected').attr('value');
-    recipeGenApp.userAllergen = $('input[type="checkbox"]:checked').attr('value');
+    recipeGenApp.userAllergen = $("input[name='allergen']:checked").attr('value');
     $.ajax({
         url: `${apiUrlFilterByMainIngredient}?c=${recipeGenApp.userMainIngredient}`,
         method: 'GET',
@@ -65,18 +67,24 @@ recipeGenApp.categoriesQuery = function(){
                     
                     $('ul.recipePreviews').append(`
                     <li class="recipe${count} fullRecipe">
-                        <div class="recipeTitle">
-                        	<p class="title">${recipe.strMeal}</p>
-                        </div>
-                        <img src="${recipe.strMealThumb}" alt="an image of ${recipe.strMeal}">
-                        <div class="directions hidden">
-                            <ul class="measurements"></ul> 
-                            <ul class="ingredients"></ul>
-                            <div class="instructions">
-                                <p>${recipe.strInstructions}</p>
+                            <div class="container">
+                                <div class="titleAndImage">
+                                    <div class="recipeTitle">
+                                    	<h2 class="title">${recipe.strMeal}</h2>
+                                    </div>
+                                    <div class="imageWrapper">
+                                        <img src="${recipe.strMealThumb}" alt="an image of ${recipe.strMeal}">
+                                    </div>
+                                </div>
+                                <div class="directions hidden">
+                                    <ul class="measurements"></ul> 
+                                    <ul class="ingredients"></ul>
+                                    <div class="instructions">
+                                        <p>${recipe.strInstructions}</p>
+                                    </div>
+                                </div>
+                                <button class="exit hidden"><span aria-hidden>X</span><span class="visuallyHidden">Exit Button</span></button>
                             </div>
-                        </div>
-                        <button class="exit hidden"><span aria-hidden>X</span><span class="visuallyHidden">Exit Button</span></button>
                     </li>
                     `);
 
@@ -101,19 +109,19 @@ recipeGenApp.categoriesQuery = function(){
 
 recipeGenApp.showRecipe = function(){
     $('ul.recipePreviews').on('click','li.fullRecipe',function(){
-        console.log('li was clicked');
         $(this).find('div.directions').removeClass('hidden');
         $(this).find('button.exit').removeClass('hidden');
         $(this).addClass('currentRecipe')
+        $(this).find('div.container').addClass('wrapper');
         $('section.recipes').prepend(this);
     })
 }
 
 recipeGenApp.hideRecipe = function(){
     $('section.recipes').on('click','button.exit',function(){
-        console.log('exit was clicked');
         $('ul.recipePreviews').prepend($('li.currentRecipe'));
         $('li.currentRecipe').find('div.directions').addClass('hidden');
+        $('li.currentRecipe').find('div.container').removeClass('wrapper')
         $('li.currentRecipe').removeClass('currentRecipe');
         $(this).addClass('hidden');
     })
