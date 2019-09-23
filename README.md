@@ -1,0 +1,1 @@
+This app was built with jQuery using a REST API called theMealDB. It's a recipe generator that allows the user to search by ingredient and filter recipes out by selecting one of the 8 most common allergens. 
